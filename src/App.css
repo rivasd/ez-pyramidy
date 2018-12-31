@@ -1,0 +1,96 @@
+@font-face {
+  font-family: 'SouvenirBold';
+  src: url('./static/Souvenir\ Bold.woff');
+}
+
+.App, main {
+  text-align: center;
+  background-color: #177cff;
+  font-family: 'SouvenirBold', serif;
+}
+
+main {
+  padding: 2%;
+  box-sizing: border-box;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.App {
+  height: 100%;
+  width: 100%
+}
+
+div.pyramidy-main {
+  display: grid;
+  height: 100%;
+  width: 100%;
+}
+
+div.pyramidy-categorie {
+  margin: 10% 5%;
+  border: 2px solid #fcff33;
+  color: #fcff33;
+  cursor: pointer;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.pyramidy-categorie.pyramidy-categorie-disabled {
+  opacity: 0.5;
+  color: #282c34;
+  pointer-events: none;
+  cursor: auto;
+}
+
+div.overlay {
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: #177cff;
+  font-family: 'SouvenirBold', serif;
+  color: #fcff33;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32pt;
+}
+
+div.overlay span.title{
+  vertical-align: middle;
+}

@@ -94,3 +94,17 @@ div.overlay {
 div.overlay span.title{
   vertical-align: middle;
 }
+
+.pyramidy-timer {
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  top:0;
+  left:0;
+  width:50px;
+  height:50px;
+  z-index:11;
+  font-family: 'SouvenirBold';
+  background-color: #177cff;
+  color: crimson;
+}

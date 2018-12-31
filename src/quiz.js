@@ -8,9 +8,7 @@ function runWords(category, ref){
     overlay.id = "pyramidy-target"
 
     var timer = document.createElement("span");
-    timer.style.position = "fixed";
-    timer.style.width = "20px";
-    timer.style.height = "20px";
+    timer.classList.add("pyramidy-timer");
     
     document.getElementById("app-container").appendChild(overlay);
     document.getElementById("app-container").appendChild(timer);

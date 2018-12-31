@@ -7,6 +7,7 @@
   text-align: center;
   background-color: #177cff;
   font-family: 'SouvenirBold', serif;
+  font-size: 18pt;
 }
 
 main {
@@ -58,7 +59,7 @@ div.pyramidy-main {
 }
 
 div.pyramidy-categorie {
-  margin: 10% 5%;
+  margin: 5% 2.5%;
   border: 2px solid #fcff33;
   color: #fcff33;
   cursor: pointer;
@@ -66,6 +67,7 @@ div.pyramidy-categorie {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding:5px;
 }
 
 div.pyramidy-categorie.pyramidy-categorie-disabled {
@@ -91,11 +93,12 @@ div.overlay {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 32pt;
+  
 }
 
 div.overlay span.title{
   vertical-align: middle;
+  font-size: 32pt;
 }
 
 .pyramidy-timer {
@@ -110,4 +113,8 @@ div.overlay span.title{
   font-family: 'SouvenirBold';
   background-color: #177cff;
   color: crimson;
+}
+
+header h4, h3 {
+  margin: 2px;
 }

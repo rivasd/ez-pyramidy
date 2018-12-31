@@ -1,12 +1,12 @@
 @font-face {
-  font-family: 'SouvenirBold';
-  src: url('./static/Souvenir\ Bold.woff');
+  font-family: 'FredokaOne';
+  src: url('./static/FredokaOne-Regular.ttf');
 }
 
 .App, main {
   text-align: center;
   background-color: #177cff;
-  font-family: 'SouvenirBold', serif;
+  font-family: 'FredokaOne', serif;
   font-size: 18pt;
 }
 
@@ -87,7 +87,7 @@ div.overlay {
   height: 100%;
   z-index: 10;
   background-color: #177cff;
-  font-family: 'SouvenirBold', serif;
+  font-family: 'FredokaOne', serif;
   color: #fcff33;
   vertical-align: middle;
   display: flex;
@@ -96,7 +96,7 @@ div.overlay {
   
 }
 
-div.overlay span.title{
+div.overlay p.title{
   vertical-align: middle;
   font-size: 32pt;
 }
@@ -110,7 +110,7 @@ div.overlay span.title{
   width:50px;
   height:50px;
   z-index:11;
-  font-family: 'SouvenirBold';
+  font-family: 'FredokaOne';
   background-color: #177cff;
   color: crimson;
 }

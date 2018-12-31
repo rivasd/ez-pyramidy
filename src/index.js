@@ -8,7 +8,7 @@ ReactDOM.render(
     (<main>
         <header>
             <h3>EZ-Pyramidy</h3>
-            <h4>Le systeme de jeu Pyramide FACILE a utiliser</h4>
+            <h4>Le système de jeu Pyramide FACILE à utiliser</h4>
         </header>
         <section>
             <App />

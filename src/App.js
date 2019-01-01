@@ -42,7 +42,7 @@ class App extends Component {
     return (
       <div className="App" id="app-container">
         <div id="pyramidy-selector" style={{display: this.state.data === null ? "block" : "none"}}>
-          <label htmlFor="source">Selectionner votre jeu</label><br/>
+          <label htmlFor="source">Sélectionnez votre jeu</label><br/>
           <input type="file" id="source" name="source" accept=".txt,.yaml,.yml" ref={this.input} onChange={this.loadData}/>
         </div>
           { (() => {

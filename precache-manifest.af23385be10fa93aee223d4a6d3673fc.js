@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "ec2639c47ba21bf323c3",
-    "url": "/ez-pyramidy/static/css/main.90ef9c8a.chunk.css"
+    "revision": "b97a6300ad54ed742d94",
+    "url": "/ez-pyramidy/static/css/main.f7a73d1e.chunk.css"
   },
   {
-    "revision": "ec2639c47ba21bf323c3",
-    "url": "/ez-pyramidy/static/js/main.ec2639c4.chunk.js"
+    "revision": "b97a6300ad54ed742d94",
+    "url": "/ez-pyramidy/static/js/main.b97a6300.chunk.js"
   },
   {
     "revision": "2fe9e96ee51d8f507c88",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/ez-pyramidy/static/media/FredokaOne-Regular.5165c0fa.ttf"
   },
   {
-    "revision": "b424170e75423e21b484543c6d84b604",
+    "revision": "028ea7482bb953d01b7a23be5ec03483",
     "url": "/ez-pyramidy/index.html"
   }
 ];

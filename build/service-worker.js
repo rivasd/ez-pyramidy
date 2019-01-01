@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/ez-pyramidy/precache-manifest.af23385be10fa93aee223d4a6d3673fc.js"
+  "/ez-pyramidy/precache-manifest.c4b9800e2253581b0c89042a94e0fae9.js"
 );
 
 workbox.clientsClaim();

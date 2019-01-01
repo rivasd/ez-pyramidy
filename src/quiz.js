@@ -14,7 +14,7 @@ function runWords(category, ref){
     document.getElementById("app-container").appendChild(timer);
 
     var timerInterval
-    var remainingTime = 30;
+    var remainingTime = 45;
 
     function startGame(){
         overlay.removeEventListener("click", startGame);
@@ -55,7 +55,7 @@ function runWords(category, ref){
         category.words.forEach((word, idx) => {
             timeline.push({
                 type: "html-button-response",
-                stimulus: word,
+                stimulus: "<p>"+word+"</p>",
                 choices: ["correct", "passe"]
             })
         })

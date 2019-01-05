@@ -22,11 +22,13 @@ function runWords(category, ref){
             display_element: "pyramidy-target",
             timeline : buildPyramidTimeline(category),
             on_finish: function(data){
+                clearInterval(timerInterval);
+                timer.textContent = "";
                 var score = data.select("button_pressed").values.reduce( (acc, cur) =>{
                     var value = parseInt(cur, 10);
-                    return acc + value === 0? 1: 0;
+                    return acc + (value === 0? 1: 0);
                 }, 0);
-                overlay.innerHTML = "<p>score: "+ score + "</p>";
+                overlay.innerHTML = "<p>score: "+ score.toString() + "</p>";
                 setTimeout(()=>{
                     overlay.remove();
                     timer.remove();
@@ -50,7 +52,7 @@ function runWords(category, ref){
                         timer.textContent = remainingTime.toString();
                         if(remainingTime < 1){
                             jsPsych.endExperiment();
-                            clearInterval(timerInterval);
+                            
                         }
                         
                     }, 1000);

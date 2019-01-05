@@ -14,7 +14,7 @@ function runWords(category, ref){
     document.getElementById("app-container").appendChild(timer);
 
     var timerInterval
-    var remainingTime = 45;
+    var remainingTime = 60;
 
     function startGame(){
         overlay.removeEventListener("click", startGame);
@@ -22,10 +22,16 @@ function runWords(category, ref){
             display_element: "pyramidy-target",
             timeline : buildPyramidTimeline(category),
             on_finish: function(data){
-                jsPsych.data.displayData("json");
-                overlay.remove();
-                timer.remove();
-                return
+                var score = data.select("button_pressed").values.reduce( (acc, cur) =>{
+                    var value = parseInt(cur, 10);
+                    return acc + value === 0? 1: 0;
+                }, 0);
+                overlay.innerHTML = "<p>score: "+ score + "</p>";
+                setTimeout(()=>{
+                    overlay.remove();
+                    timer.remove();
+                }, 2000)
+                
             }
         })
     }

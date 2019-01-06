@@ -1,14 +1,14 @@
 {
-  "main.css": "/ez-pyramidy/static/css/main.01018b9e.chunk.css",
-  "main.js": "/ez-pyramidy/static/js/main.626f4cac.chunk.js",
-  "main.js.map": "/ez-pyramidy/static/js/main.626f4cac.chunk.js.map",
+  "main.css": "/ez-pyramidy/static/css/main.d3b5e1e3.chunk.css",
+  "main.js": "/ez-pyramidy/static/js/main.b9fc10ff.chunk.js",
+  "main.js.map": "/ez-pyramidy/static/js/main.b9fc10ff.chunk.js.map",
   "static/js/1.2fe9e96e.chunk.js": "/ez-pyramidy/static/js/1.2fe9e96e.chunk.js",
   "static/js/1.2fe9e96e.chunk.js.map": "/ez-pyramidy/static/js/1.2fe9e96e.chunk.js.map",
   "runtime~main.js": "/ez-pyramidy/static/js/runtime~main.e9ad1b46.js",
   "runtime~main.js.map": "/ez-pyramidy/static/js/runtime~main.e9ad1b46.js.map",
   "static/media/App.css": "/ez-pyramidy/static/media/FredokaOne-Regular.5165c0fa.ttf",
-  "static/css/main.01018b9e.chunk.css.map": "/ez-pyramidy/static/css/main.01018b9e.chunk.css.map",
+  "static/css/main.d3b5e1e3.chunk.css.map": "/ez-pyramidy/static/css/main.d3b5e1e3.chunk.css.map",
   "index.html": "/ez-pyramidy/index.html",
-  "precache-manifest.df962d39f046cdfb75530ecaca700e8f.js": "/ez-pyramidy/precache-manifest.df962d39f046cdfb75530ecaca700e8f.js",
+  "precache-manifest.09b909ffc66dd57f4e1aa1b2117efc1c.js": "/ez-pyramidy/precache-manifest.09b909ffc66dd57f4e1aa1b2117efc1c.js",
   "service-worker.js": "/ez-pyramidy/service-worker.js"
 }

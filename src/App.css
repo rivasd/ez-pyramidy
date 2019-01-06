@@ -7,7 +7,7 @@
   text-align: center;
   background-color: #177cff;
   font-family: 'FredokaOne', serif;
-  font-size: 32pt;
+  font-size: 1.2em;
 }
 
 main {
@@ -96,9 +96,17 @@ div.overlay {
   
 }
 
-div.overlay p.title{
+div.overlay p{
   vertical-align: middle;
   font-size: 32pt; 
+}
+
+button {
+  background-color: #fcff33;
+  color: #177cff;
+  border-radius: 10px;
+  font-size: 1em;
+  font-family: 'FredokaOne', 'serif';
 }
 
 .pyramidy-timer {
@@ -117,4 +125,12 @@ div.overlay p.title{
 
 header h4, h3 {
   margin: 2px;
+}
+
+h4 {
+  font-size: 12pt;
+}
+
+h3 {
+  font-size: 14pt;
 }

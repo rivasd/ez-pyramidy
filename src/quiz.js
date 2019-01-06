@@ -33,7 +33,6 @@ function runWords(category, ref){
                     overlay.remove();
                     timer.remove();
                 }, 2000)
-                
             }
         })
     }
@@ -52,9 +51,7 @@ function runWords(category, ref){
                         timer.textContent = remainingTime.toString();
                         if(remainingTime < 1){
                             jsPsych.endExperiment();
-                            
                         }
-                        
                     }, 1000);
                 }
             }

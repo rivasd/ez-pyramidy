@@ -101,6 +101,10 @@ div.overlay p{
   font-size: 32pt; 
 }
 
+div.jspsych-categorize-html-stimulus p {
+  font-size: 50pt;
+}
+
 button {
   background-color: #fcff33;
   color: #177cff;

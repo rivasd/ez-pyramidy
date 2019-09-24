@@ -13,12 +13,12 @@ A Javascript implementation of the Pyramid game, powered by React and jsPsych.
 EZ pyramidy works by loading a Pyramid game described by a text file formatted in [yaml](https://learnxinyminutes.com/docs/yaml/) format. It's easy! just look at this template
 
 ```yaml
-# image this file is called mypyramid.txt
+# imagine this file is called mypyramid.txt
 
 # time in seconds the player has to clear all words in a category
 max_time: 45
 
-# a sequence of sequences. Each one has properties 'displayName', 'fullName' and anothe sequence called 'words'
+# a sequence of sequences. Each one has properties 'displayName', 'fullName' and another sequence called 'words'
 categories:
 
   #displayName: what will be displayed on the pyramid

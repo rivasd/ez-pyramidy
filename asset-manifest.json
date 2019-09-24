@@ -1,14 +1,16 @@
 {
-  "main.css": "/ez-pyramidy/static/css/main.d3b5e1e3.chunk.css",
-  "main.js": "/ez-pyramidy/static/js/main.b9fc10ff.chunk.js",
-  "main.js.map": "/ez-pyramidy/static/js/main.b9fc10ff.chunk.js.map",
-  "static/js/1.2fe9e96e.chunk.js": "/ez-pyramidy/static/js/1.2fe9e96e.chunk.js",
-  "static/js/1.2fe9e96e.chunk.js.map": "/ez-pyramidy/static/js/1.2fe9e96e.chunk.js.map",
-  "runtime~main.js": "/ez-pyramidy/static/js/runtime~main.e9ad1b46.js",
-  "runtime~main.js.map": "/ez-pyramidy/static/js/runtime~main.e9ad1b46.js.map",
-  "static/media/App.css": "/ez-pyramidy/static/media/FredokaOne-Regular.5165c0fa.ttf",
-  "static/css/main.d3b5e1e3.chunk.css.map": "/ez-pyramidy/static/css/main.d3b5e1e3.chunk.css.map",
-  "index.html": "/ez-pyramidy/index.html",
-  "precache-manifest.09b909ffc66dd57f4e1aa1b2117efc1c.js": "/ez-pyramidy/precache-manifest.09b909ffc66dd57f4e1aa1b2117efc1c.js",
-  "service-worker.js": "/ez-pyramidy/service-worker.js"
+  "files": {
+    "main.css": "/ez-pyramidy/static/css/main.4da2d0ff.chunk.css",
+    "main.js": "/ez-pyramidy/static/js/main.ed8d5fb3.chunk.js",
+    "main.js.map": "/ez-pyramidy/static/js/main.ed8d5fb3.chunk.js.map",
+    "runtime-main.js": "/ez-pyramidy/static/js/runtime-main.cff80fb6.js",
+    "runtime-main.js.map": "/ez-pyramidy/static/js/runtime-main.cff80fb6.js.map",
+    "static/js/2.154d7426.chunk.js": "/ez-pyramidy/static/js/2.154d7426.chunk.js",
+    "static/js/2.154d7426.chunk.js.map": "/ez-pyramidy/static/js/2.154d7426.chunk.js.map",
+    "index.html": "/ez-pyramidy/index.html",
+    "precache-manifest.0e9d9ed5401560e258d9638294f960b6.js": "/ez-pyramidy/precache-manifest.0e9d9ed5401560e258d9638294f960b6.js",
+    "service-worker.js": "/ez-pyramidy/service-worker.js",
+    "static/css/main.4da2d0ff.chunk.css.map": "/ez-pyramidy/static/css/main.4da2d0ff.chunk.css.map",
+    "static/media/App.css": "/ez-pyramidy/static/media/FredokaOne-Regular.5165c0fa.ttf"
+  }
 }

@@ -1,5 +1,5 @@
 /**
- * jspsych-html-keyboard-response
+ * jspsych-image-keyboard-response
  * Josh de Leeuw
  *
  * plugin for displaying a stimulus and getting a keyboard response
@@ -9,19 +9,39 @@
  **/
 
 
-jsPsych.plugins["html-keyboard-response"] = (function() {
+jsPsych.plugins["image-keyboard-response"] = (function() {
 
   var plugin = {};
 
+  jsPsych.pluginAPI.registerPreload('image-keyboard-response', 'stimulus', 'image');
+
   plugin.info = {
-    name: 'html-keyboard-response',
+    name: 'image-keyboard-response',
     description: '',
     parameters: {
       stimulus: {
-        type: jsPsych.plugins.parameterType.HTML_STRING,
+        type: jsPsych.plugins.parameterType.IMAGE,
         pretty_name: 'Stimulus',
         default: undefined,
-        description: 'The HTML string to be displayed'
+        description: 'The image to be displayed'
+      },
+      stimulus_height: {
+        type: jsPsych.plugins.parameterType.INT,
+        pretty_name: 'Image height',
+        default: null,
+        description: 'Set the image height in pixels'
+      },
+      stimulus_width: {
+        type: jsPsych.plugins.parameterType.INT,
+        pretty_name: 'Image width',
+        default: null,
+        description: 'Set the image width in pixels'
+      },
+      maintain_aspect_ratio: {
+        type: jsPsych.plugins.parameterType.BOOL,
+        pretty_name: 'Maintain aspect ratio',
+        default: true,
+        description: 'Maintain the aspect ratio after setting width or height'
       },
       choices: {
         type: jsPsych.plugins.parameterType.KEYCODE,
@@ -54,21 +74,34 @@ jsPsych.plugins["html-keyboard-response"] = (function() {
         default: true,
         description: 'If true, trial will end when subject makes a response.'
       },
-
     }
   }
 
   plugin.trial = function(display_element, trial) {
 
-    var new_html = '<div id="jspsych-html-keyboard-response-stimulus">'+trial.stimulus+'</div>';
+    // display stimulus
+    var html = '<img src="'+trial.stimulus+'" id="jspsych-image-keyboard-response-stimulus" style="';
+    if(trial.stimulus_height !== null){
+      html += 'height:'+trial.stimulus_height+'px; '
+      if(trial.stimulus_width == null && trial.maintain_aspect_ratio){
+        html += 'width: auto; ';
+      }
+    }
+    if(trial.stimulus_width !== null){
+      html += 'width:'+trial.stimulus_width+'px; '
+      if(trial.stimulus_height == null && trial.maintain_aspect_ratio){
+        html += 'height: auto; ';
+      }
+    }
+    html +='"></img>';
 
     // add prompt
-    if(trial.prompt !== null){
-      new_html += trial.prompt;
+    if (trial.prompt !== null){
+      html += trial.prompt;
     }
 
-    // draw
-    display_element.innerHTML = new_html;
+    // render
+    display_element.innerHTML = html;
 
     // store response
     var response = {
@@ -106,7 +139,7 @@ jsPsych.plugins["html-keyboard-response"] = (function() {
 
       // after a valid response, the stimulus will have the CSS class 'responded'
       // which can be used to provide visual feedback that a response was recorded
-      display_element.querySelector('#jspsych-html-keyboard-response-stimulus').className += ' responded';
+      display_element.querySelector('#jspsych-image-keyboard-response-stimulus').className += ' responded';
 
       // only record the first response
       if (response.key == null) {
@@ -132,7 +165,7 @@ jsPsych.plugins["html-keyboard-response"] = (function() {
     // hide stimulus if stimulus_duration is set
     if (trial.stimulus_duration !== null) {
       jsPsych.pluginAPI.setTimeout(function() {
-        display_element.querySelector('#jspsych-html-keyboard-response-stimulus').style.visibility = 'hidden';
+        display_element.querySelector('#jspsych-image-keyboard-response-stimulus').style.visibility = 'hidden';
       }, trial.stimulus_duration);
     }
 

@@ -24,7 +24,7 @@ class Categorie extends Component {
             disabled:true
         })
 
-        runWords(this.props.category, this.jsPsychTarget.current)
+        runWords(this.props.category, this.props.default_time)
     }
 
     render(){

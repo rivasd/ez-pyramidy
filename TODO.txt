@@ -1,0 +1,3 @@
+- pouvoir revenir dans les categories precedentes
+- pouvoir specifier le temps de presentation 
+- Augmenter la taille du texte

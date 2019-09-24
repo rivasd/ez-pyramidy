@@ -1,7 +1,7 @@
 /* global jsPsych */
 
 
-function runWords(category, ref){
+function runWords(category, max_time=60){
     var overlay = document.createElement("div");
     overlay.classList.add("overlay");
     overlay.innerHTML = "<p class=\"title\">"+category.fullName+"</p>"
@@ -14,19 +14,22 @@ function runWords(category, ref){
     document.getElementById("app-container").appendChild(timer);
 
     var timerInterval
-    var remainingTime = 60;
+    var remainingTime = max_time;
+    if( "max_time" in category){
+        remainingTime = category.max_time;
+    }
+    
 
     function startGame(){
         overlay.removeEventListener("click", startGame);
         jsPsych.init({
             display_element: "pyramidy-target",
             timeline : buildPyramidTimeline(category),
-            on_finish: function(data){
+            on_finish: (data) => {
                 clearInterval(timerInterval);
                 timer.textContent = "";
-                var score = data.select("button_pressed").values.reduce( (acc, cur) =>{
-                    var value = parseInt(cur, 10);
-                    return acc + (value === 0? 1: 0);
+                var score = data.select("correct").values.reduce( (acc, cur) =>{
+                    return acc + (cur? 1: 0);
                 }, 0);
                 overlay.innerHTML = "<p>score: "+ score.toString() + "</p>";
                 setTimeout(()=>{
@@ -34,16 +37,17 @@ function runWords(category, ref){
                     timer.remove();
                 }, 2000)
             }
-        })
+        }) 
     }
 
     overlay.addEventListener("click", startGame)
 
     function buildPyramidTimeline(category) {
-        var timeline = [
+        var intro = 
             {
                 type: "html-keyboard-response",
-                stimulus: "Vous aurez 30 secondes pour faire deviner un maximum de mots. Si vous devez deviner, détournez le regard maintenant. Appuyez sur une touche pour commencer!",
+                stimulus: "<p>Vous aurez 30 secondes pour faire deviner un maximum de mots. Si vous devez deviner, détournez le regard maintenant. </p> \
+                        <p> Arbitre, appuyez sur 'S' si bonne reponse, 'A' pour passer </p> <p>Appuyez sur une touche pour commencer!</p>",
                 on_finish: function(data) {
                     timer.textContent = remainingTime.toString();
                     timerInterval = setInterval( () => {
@@ -55,18 +59,41 @@ function runWords(category, ref){
                     }, 1000);
                 }
             }
-        ]
+        
+
+        var answers = [...category.words];
+        var total_num = answers.length;
+        var counter = 0;
+
+        var questions = {
+            type: "categorize-html",
+            stimulus: () => {
+                return "<p>" + answers[counter % answers.length] + "</p>"
+            },
+            choices: ["a", "s"],
+            correct_text:"Bravo!",
+            incorrect_text: "ipelaille...",
+            feedback_duration: 250,
+            key_answer: jsPsych.pluginAPI.convertKeyCharacterToKeyCode("s"),
+            on_finish: (data) => {
+                if (data.correct){
+                    answers.splice(counter % answers.length, 1);
+                }
+                else{
+                    counter++;
+                }
+                
+            }
+        }
     
-        category.words.forEach((word, idx) => {
-            timeline.push({
-                type: "html-button-response",
-                stimulus: "<p>"+word+"</p>",
-                choices: ["correct", "passe"]
-            })
-        })
     
     
-        return timeline
+        return [intro, {
+            timeline: [questions],
+            loop_function: () => {
+                return answers.length > 0
+            }
+        }]
     }
 }
 

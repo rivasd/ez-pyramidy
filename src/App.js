@@ -11,7 +11,7 @@ class App extends Component {
     this.input = React.createRef()
     this.loadData = this.loadData.bind(this);
     this.state = {
-      data: null
+      categories: null
     }
   }
 
@@ -25,8 +25,14 @@ class App extends Component {
       var text = reader.result
       try {
         var parsed = jsyaml.safeLoad(text);
+        var max_time = 60;
+        if ("max_time" in parsed){
+          max_time = parseInt(parsed.max_time)
+        };
+
         self.setState({
-          data: parsed.categories
+          categories: parsed.categories,
+          default_time: max_time
         })
       }
       catch (e){
@@ -41,16 +47,16 @@ class App extends Component {
   render() {
     return (
       <div className="App" id="app-container">
-        <div id="pyramidy-selector" style={{display: this.state.data === null ? "block" : "none"}}>
+        <div id="pyramidy-selector" style={{display: this.state.categories === null ? "block" : "none"}}>
           <label htmlFor="source">Sélectionnez votre jeu</label><br/>
           <input type="file" id="source" name="source" accept=".txt,.yaml,.yml" ref={this.input} onChange={this.loadData}/>
         </div>
           { (() => {
-            if(this.state.data === null){
-              return
+            if(this.state.categories === null){
+              return ""
             }
             else{
-              return (<Pyramid categories={this.state.data} />)
+              return (<Pyramid categories={this.state.categories} default_time={this.state.default_time}/>)
             }
           })()}
           

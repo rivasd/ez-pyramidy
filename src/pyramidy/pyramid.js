@@ -7,8 +7,10 @@ class Pyramid extends Component {
     constructor(props){
         super(props);
         this.mainFrame = React.createRef();
+
         this.state = {
-            categories: this.props.categories
+            categories : props.categories,
+            default_time: props.default_time
         }
     }
 
@@ -76,7 +78,7 @@ class Pyramid extends Component {
         return (
             <div className="pyramidy-main" style={this.getGridCss()}>
                 {this.state.categories.map( (elem, idx) => (
-                    <Categorie style={styles[idx]} key={idx} order={idx} displayName={elem.displayName} fullName={elem.fullName} category={elem}/>
+                    <Categorie style={styles[idx]} key={idx} order={idx} displayName={elem.displayName} fullName={elem.fullName} category={elem} default_time={this.props.default_time}/>
                 ))
                 }
             </div>

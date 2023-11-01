@@ -1,6 +1,5 @@
 /* global jsPsych */
 
-
 function runWords(category, max_time=60){
     var overlay = document.createElement("div");
     overlay.classList.add("overlay");
@@ -28,7 +27,7 @@ function runWords(category, max_time=60){
             on_finish: (data) => {
                 clearInterval(timerInterval);
                 timer.textContent = "";
-                var score = data.select("correct").values.reduce( (acc, cur) =>{
+                var score = data.select("button_pressed").values.reduce( (acc, cur) =>{
                     return acc + (cur? 1: 0);
                 }, 0);
                 overlay.innerHTML = "<p>score: "+ score.toString() + "</p>";
@@ -46,8 +45,8 @@ function runWords(category, max_time=60){
         var intro = 
             {
                 type: "html-keyboard-response",
-                stimulus: "<p>Vous aurez 30 secondes pour faire deviner un maximum de mots. Si vous devez deviner, détournez le regard maintenant. </p> \
-                        <p> Arbitre, appuyez sur 'S' si bonne reponse, 'A' pour passer </p> <p>Appuyez sur une touche pour commencer!</p>",
+                stimulus: `<p>Vous aurez ${max_time} secondes pour faire deviner un maximum de mots! \n Si vous devez deviner, détournez le regard maintenant. </p> \
+                        <p> Utilisez les boutons, ou sinon ESPACE pour réussir et P pour passer </p> <p>Appuyez sur une touche pour commencer!</p>`,
                 on_finish: function(data) {
                     timer.textContent = remainingTime.toString();
                     timerInterval = setInterval( () => {
@@ -66,23 +65,59 @@ function runWords(category, max_time=60){
         var counter = 0;
 
         var questions = {
-            type: "categorize-html",
+            type: "html-button-response",
             stimulus: () => {
                 return "<p>" + answers[counter % answers.length] + "</p>"
             },
-            choices: ["a", "s"],
+            choices: ["réussi", "passe"],
             correct_text:"Bravo!",
             incorrect_text: "ipelaille...",
             feedback_duration: 250,
+            response_ends_trial: true,
             key_answer: jsPsych.pluginAPI.convertKeyCharacterToKeyCode("s"),
             on_finish: (data) => {
-                if (data.correct){
+                var resp = data.response || data.button_pressed
+                if (resp == 0){
                     answers.splice(counter % answers.length, 1);
                 }
-                else{
+                else if(resp == 1) {
                     counter++;
                 }
                 
+            },
+            on_load: (a) => {
+                //attach custom key event listeners to keep current keyboard response
+                
+                var after_key = (info) => {
+
+                    
+                    if (jsPsych.pluginAPI.compareKeys(info.key, " ")){
+                        //trigger réussi
+                        
+
+                        if (typeof keyboardListener !== 'undefined') {
+                            jsPsych.pluginAPI.cancelKeyboardResponse(keyboardListener);
+                          }
+                          document.getElementById("jspsych-html-button-response-button-0").click();
+                    }
+                    else if (jsPsych.pluginAPI.compareKeys(info.key, "p")){
+                        //trigger passe
+                        
+                        if (typeof keyboardListener !== 'undefined') {
+                            jsPsych.pluginAPI.cancelKeyboardResponse(keyboardListener);
+                          }
+                        document.getElementById("jspsych-html-button-response-button-1").click();
+                    }
+
+                }
+
+                var keyboardListener = jsPsych.pluginAPI.getKeyboardResponse({
+                    callback_function: after_key,
+                    valid_responses: [" ", "p"],
+                    rt_method: 'performance',
+                    persist: false,
+                    allow_held_key: false
+                  });
             }
         }
     

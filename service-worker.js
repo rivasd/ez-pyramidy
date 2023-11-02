@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ez-pyramidy/precache-manifest.daebfcaee5eba51a03c4fb03a645ea3f.js"
+  "/ez-pyramidy/precache-manifest.bd1e8a2afd76eac677fb199379dedc88.js"
 );
 
 self.addEventListener('message', (event) => {

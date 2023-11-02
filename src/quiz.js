@@ -44,9 +44,10 @@ function runWords(category, max_time=60){
     function buildPyramidTimeline(category) {
         var intro = 
             {
-                type: "html-keyboard-response",
+                type: "html-button-response",
                 stimulus: `<p>Vous aurez ${max_time} secondes pour faire deviner un maximum de mots! \n Si vous devez deviner, détournez le regard maintenant. </p> \
-                        <p> Utilisez les boutons, ou sinon ESPACE pour réussir et P pour passer </p> <p>Appuyez sur une touche pour commencer!</p>`,
+                        <p> Utilisez les boutons, ou sinon ESPACE pour réussir et P pour passer</p>`,
+                choices: ["Débuter!"],
                 on_finish: function(data) {
                     timer.textContent = remainingTime.toString();
                     timerInterval = setInterval( () => {

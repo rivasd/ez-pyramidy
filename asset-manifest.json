@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ez-pyramidy/static/css/main.00f1b87c.chunk.css",
-    "main.js": "/ez-pyramidy/static/js/main.31825e06.chunk.js",
-    "main.js.map": "/ez-pyramidy/static/js/main.31825e06.chunk.js.map",
+    "main.js": "/ez-pyramidy/static/js/main.d252fae1.chunk.js",
+    "main.js.map": "/ez-pyramidy/static/js/main.d252fae1.chunk.js.map",
     "runtime-main.js": "/ez-pyramidy/static/js/runtime-main.9c255bf6.js",
     "runtime-main.js.map": "/ez-pyramidy/static/js/runtime-main.9c255bf6.js.map",
     "static/js/2.0ca126b2.chunk.js": "/ez-pyramidy/static/js/2.0ca126b2.chunk.js",
     "static/js/2.0ca126b2.chunk.js.map": "/ez-pyramidy/static/js/2.0ca126b2.chunk.js.map",
     "index.html": "/ez-pyramidy/index.html",
-    "precache-manifest.a2be47353dfbd3a9228ab4c4293b2798.js": "/ez-pyramidy/precache-manifest.a2be47353dfbd3a9228ab4c4293b2798.js",
+    "precache-manifest.daebfcaee5eba51a03c4fb03a645ea3f.js": "/ez-pyramidy/precache-manifest.daebfcaee5eba51a03c4fb03a645ea3f.js",
     "service-worker.js": "/ez-pyramidy/service-worker.js",
     "static/css/main.00f1b87c.chunk.css.map": "/ez-pyramidy/static/css/main.00f1b87c.chunk.css.map",
     "static/js/2.0ca126b2.chunk.js.LICENSE.txt": "/ez-pyramidy/static/js/2.0ca126b2.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.9c255bf6.js",
     "static/js/2.0ca126b2.chunk.js",
     "static/css/main.00f1b87c.chunk.css",
-    "static/js/main.31825e06.chunk.js"
+    "static/js/main.d252fae1.chunk.js"
   ]
 }

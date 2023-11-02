@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f41e6ed4ed5e388da234421627af7ea8",
+    "revision": "4b99f167b9ec3ec835a9befbd53ec277",
     "url": "/ez-pyramidy/index.html"
   },
   {
-    "revision": "7482cc6f41fc2248dae6",
+    "revision": "491d89da6168ab6741a5",
     "url": "/ez-pyramidy/static/css/main.00f1b87c.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ez-pyramidy/static/js/2.0ca126b2.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7482cc6f41fc2248dae6",
-    "url": "/ez-pyramidy/static/js/main.31825e06.chunk.js"
+    "revision": "491d89da6168ab6741a5",
+    "url": "/ez-pyramidy/static/js/main.d252fae1.chunk.js"
   },
   {
     "revision": "79b69db31bad98cb9c14",

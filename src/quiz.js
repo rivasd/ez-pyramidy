@@ -28,7 +28,7 @@ function runWords(category, max_time=60){
                 clearInterval(timerInterval);
                 timer.textContent = "";
                 var score = data.select("button_pressed").values.reduce( (acc, cur) =>{
-                    return acc + (cur? 1: 0);
+                    return acc + (1-parseInt(cur));
                 }, 0);
                 overlay.innerHTML = "<p>score: "+ score.toString() + "</p>";
                 setTimeout(()=>{

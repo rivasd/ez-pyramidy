@@ -29,7 +29,6 @@ function runWords(category, max_time=60){
                 timer.textContent = "";
                 console.log(data.select("button_pressed"));
                 var score = data.select("button_pressed").values.reduce( (acc, cur) =>{
-                    console.log(`acc: ${acc}, cur ${cur}`);
                     return acc + (1-parseInt(cur));
                 }, 0);
                 overlay.innerHTML = "<p>score: "+ (score - 1).toString() + "</p>";

@@ -27,7 +27,6 @@ function runWords(category, max_time=60){
             on_finish: (data) => {
                 clearInterval(timerInterval);
                 timer.textContent = "";
-                console.log(data.select("button_pressed"));
                 var score = data.select("button_pressed").values.reduce( (acc, cur) =>{
                     return acc + (1-parseInt(cur));
                 }, 0);

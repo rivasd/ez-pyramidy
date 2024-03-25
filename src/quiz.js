@@ -27,10 +27,12 @@ function runWords(category, max_time=60){
             on_finish: (data) => {
                 clearInterval(timerInterval);
                 timer.textContent = "";
+                console.log(data.select("button_pressed"));
                 var score = data.select("button_pressed").values.reduce( (acc, cur) =>{
+                    console.log(`acc: ${acc}, cur ${cur}`);
                     return acc + (1-parseInt(cur));
                 }, 0);
-                overlay.innerHTML = "<p>score: "+ score.toString() + "</p>";
+                overlay.innerHTML = "<p>score: "+ (score - 1).toString() + "</p>";
                 setTimeout(()=>{
                     overlay.remove();
                     timer.remove();
@@ -77,11 +79,12 @@ function runWords(category, max_time=60){
             response_ends_trial: true,
             key_answer: jsPsych.pluginAPI.convertKeyCharacterToKeyCode("s"),
             on_finish: (data) => {
-                var resp = data.response || data.button_pressed
-                if (resp == 0){
+                var resp = data.response || data.button_pressed;
+                // resp is a string
+                if (resp === '0'){
                     answers.splice(counter % answers.length, 1);
                 }
-                else if(resp == 1) {
+                else if(resp === '1' ) {
                     counter++;
                 }
                 

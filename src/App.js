@@ -24,7 +24,7 @@ class App extends Component {
     reader.onload = function(){
       var text = reader.result
       try {
-        var parsed = jsyaml.safeLoad(text);
+        var parsed = jsyaml.load(text);
         var max_time = 60;
         if ("max_time" in parsed){
           max_time = parseInt(parsed.max_time)

@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ez-pyramidy/static/css/main.459dbf0e.css",
-    "main.js": "/ez-pyramidy/static/js/main.69be47f1.js",
+    "main.js": "/ez-pyramidy/static/js/main.d5b50ef2.js",
     "static/media/FredokaOne-Regular.ttf": "/ez-pyramidy/static/media/FredokaOne-Regular.376fe6504a42a11500a2.ttf",
     "index.html": "/ez-pyramidy/index.html",
     "main.459dbf0e.css.map": "/ez-pyramidy/static/css/main.459dbf0e.css.map",
-    "main.69be47f1.js.map": "/ez-pyramidy/static/js/main.69be47f1.js.map"
+    "main.d5b50ef2.js.map": "/ez-pyramidy/static/js/main.d5b50ef2.js.map"
   },
   "entrypoints": [
     "static/css/main.459dbf0e.css",
-    "static/js/main.69be47f1.js"
+    "static/js/main.d5b50ef2.js"
   ]
 }

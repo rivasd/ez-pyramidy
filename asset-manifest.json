@@ -1,23 +1,14 @@
 {
   "files": {
-    "main.css": "/ez-pyramidy/static/css/main.00f1b87c.chunk.css",
-    "main.js": "/ez-pyramidy/static/js/main.d40ad347.chunk.js",
-    "main.js.map": "/ez-pyramidy/static/js/main.d40ad347.chunk.js.map",
-    "runtime-main.js": "/ez-pyramidy/static/js/runtime-main.9c255bf6.js",
-    "runtime-main.js.map": "/ez-pyramidy/static/js/runtime-main.9c255bf6.js.map",
-    "static/js/2.0ca126b2.chunk.js": "/ez-pyramidy/static/js/2.0ca126b2.chunk.js",
-    "static/js/2.0ca126b2.chunk.js.map": "/ez-pyramidy/static/js/2.0ca126b2.chunk.js.map",
+    "main.css": "/ez-pyramidy/static/css/main.459dbf0e.css",
+    "main.js": "/ez-pyramidy/static/js/main.f65f9893.js",
+    "static/media/FredokaOne-Regular.ttf": "/ez-pyramidy/static/media/FredokaOne-Regular.376fe6504a42a11500a2.ttf",
     "index.html": "/ez-pyramidy/index.html",
-    "precache-manifest.bd1e8a2afd76eac677fb199379dedc88.js": "/ez-pyramidy/precache-manifest.bd1e8a2afd76eac677fb199379dedc88.js",
-    "service-worker.js": "/ez-pyramidy/service-worker.js",
-    "static/css/main.00f1b87c.chunk.css.map": "/ez-pyramidy/static/css/main.00f1b87c.chunk.css.map",
-    "static/js/2.0ca126b2.chunk.js.LICENSE.txt": "/ez-pyramidy/static/js/2.0ca126b2.chunk.js.LICENSE.txt",
-    "static/media/App.css": "/ez-pyramidy/static/media/FredokaOne-Regular.5165c0fa.ttf"
+    "main.459dbf0e.css.map": "/ez-pyramidy/static/css/main.459dbf0e.css.map",
+    "main.f65f9893.js.map": "/ez-pyramidy/static/js/main.f65f9893.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.9c255bf6.js",
-    "static/js/2.0ca126b2.chunk.js",
-    "static/css/main.00f1b87c.chunk.css",
-    "static/js/main.d40ad347.chunk.js"
+    "static/css/main.459dbf0e.css",
+    "static/js/main.f65f9893.js"
   ]
 }

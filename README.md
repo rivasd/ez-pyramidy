@@ -1,69 +1,75 @@
-# EZ Pyramidy
+# React + TypeScript + Vite
 
-A Javascript implementation of the Pyramid game, powered by React and jsPsych.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## How to play?
+Currently, two official plugins are available:
 
-1. go to http://rivasd.github.io/ez-pyramidy and hope there is no bug.
-2. Upload the text file describing your game
-3. Have fun!
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## How to describe my game?
+## React Compiler
 
-EZ pyramidy works by loading a Pyramid game described by a text file formatted in [yaml](https://learnxinyminutes.com/docs/yaml/) format. It's easy! just look at this template
+The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
 
-```yaml
-# imagine this file is called mypyramid.txt
+Note: This will impact Vite dev & build performances.
 
-# time in seconds the player has to clear all words in a category
-max_time: 45
+## Expanding the ESLint configuration
 
-# a sequence of sequences. Each one has properties 'displayName', 'fullName' and another sequence called 'words'
-categories:
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-  #displayName: what will be displayed on the pyramid
- - displayName: L'antarctique
-  
-   #fullName: the true name of the category that will appear if it gets chosen
-   fullName: Objets froids
-   
-   #words: a simple list of category members the player will have to make others guess
-   words:
-   - La surface de pluton
-   - Azote liquide
-   - Vanilla Ice
-   - Le Blizzard
-   - Le regard d'un ennemi
-   
- # you can add as many categories as you want, the Pyramid will auto-grow!
- - displayName: Wayne Gretzky
-   fullName: Canadiens célèbres
-   # you can override the global max time if you want some categories to allow more time! cool.
-   max_time: 60
-   words:
-   - Avril Lavigne
-   - Lester B. Pearson
-   - Alexander Graham Bell
-   - Ernest Rutherford
-   - Celine Dion
- - displayName: L'an 3000
-   fullName: Inventions de l'an 3000
-   words: 
-   - Hoverboard
-   - Téléportation
-   - Psychohistoire
-   - Fin de la construction de la ligne bleu à Montréal
-   - Machine à voyager dans le temps
- - displayName: Jusqu'à 20
-   fullName: Contes
-   words:
-   - Le vaillant petit tailleur
-   - Boucle d'or et les trois ours
-   - Hansel et Gretel
-   - Barbe-bleue
-   - Sinbad le marin
-   
-# Ok you got the gist!
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
+
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-Your file should have a `.yml` or `.txt` extension. You can write it with any text editor like Notepad, just make sure you save in UTF-8 encoding si vous parlez le français!
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```

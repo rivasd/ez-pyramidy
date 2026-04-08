@@ -1,4 +1,5 @@
 import {initJsPsych} from 'jspsych';
+import htmlButtonResponse from '@jspsych/plugin-html-button-response';
 import type { Category } from './models';
 
 
@@ -15,18 +16,19 @@ function runWords(category: Category, max_time=60){
     document.getElementById("app-container")?.appendChild(overlay);
     document.getElementById("app-container")?.appendChild(timer);
 
-    let timerInterval: number;
+    let timerInterval: number=0;
     let remainingTime = max_time;
     if( "max_time" in category){
         remainingTime = category.max_time ?? max_time;
     }
+    let jsPsych: ReturnType<typeof initJsPsych>;
     
 
     function startGame(){
         overlay.removeEventListener("click", startGame);
-        const jsPsych = initJsPsych({
+        jsPsych = initJsPsych({
             display_element: "pyramidy-target",
-            timeline : buildPyramidTimeline(category),
+            timeline : buildPyramidTimeline(category, jsPsych, timer, remainingTime, timerInterval),
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             on_finish: (data:any) => {
                 clearInterval(timerInterval);
@@ -40,16 +42,20 @@ function runWords(category: Category, max_time=60){
                     timer.remove();
                 }, 2000)
             }
-        }) 
+        })
+        
+        jsPsych.run(buildPyramidTimeline(category, jsPsych, timer, remainingTime, timerInterval))
     }
 
     overlay.addEventListener("click", startGame)
+    
+}
 
-    function buildPyramidTimeline(category: Category) {
+function buildPyramidTimeline(category: Category, jsPsych: ReturnType<typeof initJsPsych>, timer: HTMLSpanElement, remainingTime: number, timerInterval: number){ {
         const intro = 
             {
-                type: "html-button-response",
-                stimulus: `<p>Vous aurez ${max_time} secondes pour faire deviner un maximum de mots! \n Si vous devez deviner, détournez le regard maintenant. </p> \
+                type: htmlButtonResponse,
+                stimulus: `<p>Vous aurez ${category.max_time} secondes pour faire deviner un maximum de mots! \n Si vous devez deviner, détournez le regard maintenant. </p> \
                         <p> Utilisez les boutons, ou sinon ESPACE pour réussir et P pour passer</p>`,
                 choices: ["Débuter!"],
                 on_finish: function(data) {
@@ -58,7 +64,7 @@ function runWords(category: Category, max_time=60){
                         remainingTime--;
                         timer.textContent = remainingTime.toString();
                         if(remainingTime < 1){
-                            jsPsych.endExperiment();
+                            jsPsych.abortExperiment();
                         }
                     }, 1000);
                 }
@@ -69,7 +75,7 @@ function runWords(category: Category, max_time=60){
         let counter = 0;
 
         const questions = {
-            type: "html-button-response",
+            type: htmlButtonResponse,
             stimulus: () => {
                 return "<p>" + answers[counter % answers.length] + "</p>"
             },
@@ -78,9 +84,9 @@ function runWords(category: Category, max_time=60){
             incorrect_text: "ipelaille...",
             feedback_duration: 250,
             response_ends_trial: true,
-            key_answer: jsPsych.pluginAPI.convertKeyCharacterToKeyCode("s"),
+            key_answer: "s",
             on_finish: (data) => {
-                var resp = data.response || data.button_pressed;
+                const resp = data.response || data.button_pressed;
                 // resp is a string
                 if (resp === '0'){
                     answers.splice(counter % answers.length, 1);
@@ -129,6 +135,7 @@ function runWords(category: Category, max_time=60){
     
     
         return [intro, {
+            type: htmlButtonResponse,
             timeline: [questions],
             loop_function: () => {
                 return answers.length > 0

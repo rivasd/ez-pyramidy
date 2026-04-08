@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import classNames from 'classnames';
 import runWords from '../quiz';
 import { useGameStore } from '../state';
+import { JsPsych } from 'jspsych';
+import { Button } from '@mantine/core';
 
 interface CategorieProps {
     order: number;
@@ -15,6 +17,8 @@ const Categorie = (props: CategorieProps) => {
     const currentTeam = useGameStore((state) => state.gameDef?.currentTeam);
     const default_time = useGameStore((state) => state.gameDef?.max_time || 0);
     const disabled = category?.selectedBy !== undefined
+
+    const jsPsychRef = useRef<JsPsych | null>(null)
 
     const play = (e: React.MouseEvent<HTMLDivElement>) => {
         if(!category || disabled){

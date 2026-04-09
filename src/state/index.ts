@@ -46,6 +46,7 @@ interface PyramidState {
   setCurrentTeam: (teamIndex: number) => void;
   playCategory: (categoryIndex: number, teamIndex:number) => void;
   loadGameDef: (file: File) => void;
+  answerWord: (categoryIndex: number, wordIndex: number, responseTime: number) => void;
 }
 
 export const useGameStore = create<PyramidState>((set) => ({
@@ -106,6 +107,35 @@ export const useGameStore = create<PyramidState>((set) => ({
       }
     };
     reader.readAsText(file);
-  }
+  },  answerWord: (categoryIndex: number, wordIndex: number, responseTime: number) => set((state) => {
+    if (!state.gameDef) {
+      throw new Error("Game definition must be set before answering a word.");
+    }
+    const updatedCategories = state.gameDef.categories.map((cat, idx) => {
+      if (idx === categoryIndex) {
+        const updatedWords = cat.words.map((word, wIdx) => {
+          if (wIdx === wordIndex) {
+            return {
+              ...word,
+              success: true,
+              responseTime: responseTime
+            }
+          }
+          return word;
+        });
+        return {
+          ...cat,
+          words: updatedWords
+        }
+      }
+      return cat;
+    });
+    return {
+      gameDef: {
+        ...state.gameDef,
+        categories: updatedCategories
+      }
+    };
+  })
 
 }));

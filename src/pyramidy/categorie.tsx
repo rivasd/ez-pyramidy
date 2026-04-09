@@ -1,34 +1,18 @@
-import React, { useRef } from 'react';
+import {useState} from 'react';
 import classNames from 'classnames';
-import runWords from '../quiz';
 import { useGameStore } from '../state';
-import { JsPsych } from 'jspsych';
-import { Button } from '@mantine/core';
 
 interface CategorieProps {
     order: number;
     style: Partial<React.CSSProperties>;
+    onClick: () => void;
 }
 
 const Categorie = (props: CategorieProps) => {
 
-    const [playing, setPlaying] = React.useState(false);
+    const [playing, setPlaying] = useState(false);
     const category = useGameStore((state) => state.gameDef?.categories[props.order]);
-    const currentTeam = useGameStore((state) => state.gameDef?.currentTeam);
-    const default_time = useGameStore((state) => state.gameDef?.max_time || 0);
     const disabled = category?.selectedBy !== undefined
-
-    const jsPsychRef = useRef<JsPsych | null>(null)
-
-    const play = (e: React.MouseEvent<HTMLDivElement>) => {
-        if(!category || disabled){
-            return;
-        }
-        e.preventDefault();
-        e.stopPropagation();
-        setPlaying(true);
-        runWords(category, default_time)
-    }
 
     const catClass = classNames("pyramidy-categorie",{
         'pyramidy-categorie-disabled': disabled,
@@ -38,7 +22,7 @@ const Categorie = (props: CategorieProps) => {
 
     return(
         
-        <div id={"pyramidy-categorie-"+props.order} className={catClass} style={props.style} onClick={play}>
+        <div id={"pyramidy-categorie-"+props.order} className={catClass} style={props.style} onClick={props.onClick}>
             <span>{category?.displayName}</span>
         </div>
     )

@@ -2,9 +2,6 @@
 export interface Team {
   name: string;
 }
-
-type Teams = Team[];
-
 export interface Word {
   mot: string;
   imgUrl?: string;
@@ -23,6 +20,4 @@ export interface Category {
 export interface Game {
   max_time: number;
   categories: Category[];
-  teams: Teams;
-  currentTeam: number;
 }

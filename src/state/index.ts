@@ -1,7 +1,7 @@
 import {create} from 'zustand';
 import { parse } from 'yaml';
 import { z } from 'zod';
-import type { Game } from '../models';
+import type { Game, Team } from '../models';
 
 const WordSchema = z.object({
   mot: z.string(),
@@ -42,16 +42,23 @@ function formatValidationErrors(error: z.ZodError): string {
 
 interface PyramidState {
   gameDef?: Game
+  teams: Team[];
+  currentTeam?: number;
   setGameDef: (gameDef: Game) => void;
-  setCurrentTeam: (teamIndex: number) => void;
-  playCategory: (categoryIndex: number, teamIndex:number) => void;
+  resetGame: () => void;
+  advanceToNextTeam: () => void;
+  setTeams : (teams: Team[]) => void;
+  playCategory: (categoryIndex: number) => void;
   loadGameDef: (file: File) => void;
   answerWord: (categoryIndex: number, wordIndex: number, responseTime: number) => void;
 }
 
 export const useGameStore = create<PyramidState>((set) => ({
+  teams: [],
   setGameDef: (gameDef: Game) => set({ gameDef }),
-  playCategory: (categoryIndex: number, teamIndex:number) => set((state) => {
+  setTeams: (teams: Team[]) => set({ teams, currentTeam: 0 }),
+  resetGame: () => set({ gameDef: undefined, currentTeam: undefined }),
+  playCategory: (categoryIndex: number) => set((state) => {
     if (!state.gameDef) {
       throw new Error("Game definition must be set before playing a category.");
     }
@@ -59,7 +66,7 @@ export const useGameStore = create<PyramidState>((set) => ({
       if (idx === categoryIndex) {
         return {
           ...cat,
-          selectedBy: teamIndex
+          selectedBy: state.currentTeam
         }
       }
       return cat;
@@ -71,16 +78,14 @@ export const useGameStore = create<PyramidState>((set) => ({
       }
     };
   }),
-  setCurrentTeam: (teamIndex: number) => set((state) => {
+  advanceToNextTeam: () => set((state) => {
     if (!state.gameDef) {
       throw new Error("Game definition must be set before changing the current team.");
     }
-    return {
-      gameDef: {
-        ...state.gameDef,
-        currentTeam: teamIndex
-      }
-    };
+    if( state.currentTeam === undefined) {
+      return { currentTeam: 0 };
+    }
+    return { currentTeam: (state.currentTeam + 1) % state.teams.length };
   }),
   loadGameDef: (file: File) => {
     const reader = new FileReader();
@@ -94,8 +99,6 @@ export const useGameStore = create<PyramidState>((set) => ({
         const validated = GameSchema.parse(parsed);
         const gameDef: Game = {
           ...validated,
-          teams: [],
-          currentTeam: 0,
         };
         set({ gameDef });
       } catch (error) {
@@ -107,7 +110,8 @@ export const useGameStore = create<PyramidState>((set) => ({
       }
     };
     reader.readAsText(file);
-  },  answerWord: (categoryIndex: number, wordIndex: number, responseTime: number) => set((state) => {
+  },  
+  answerWord: (categoryIndex: number, wordIndex: number, responseTime: number) => set((state) => {
     if (!state.gameDef) {
       throw new Error("Game definition must be set before answering a word.");
     }
@@ -137,5 +141,4 @@ export const useGameStore = create<PyramidState>((set) => ({
       }
     };
   })
-
 }));

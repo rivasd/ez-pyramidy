@@ -13,7 +13,7 @@ const Recap = ({ categoryIdx, onEnd }: { categoryIdx: number, onEnd: () => void 
         ))}
       </List>
       <Button onClick={onEnd}>
-        Terminer
+        Continuer
       </Button>
     </Stack>
   )

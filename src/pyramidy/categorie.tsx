@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import classNames from 'classnames';
 import { useGameStore } from '../state';
 
@@ -10,13 +9,11 @@ interface CategorieProps {
 
 const Categorie = (props: CategorieProps) => {
 
-    const [playing, setPlaying] = useState(false);
     const category = useGameStore((state) => state.gameDef?.categories[props.order]);
     const disabled = category?.selectedBy !== undefined
 
     const catClass = classNames("pyramidy-categorie",{
-        'pyramidy-categorie-disabled': disabled,
-        'pyramidy-categorie-playing': playing
+        'pyramidy-categorie-disabled': disabled
     })
 
 

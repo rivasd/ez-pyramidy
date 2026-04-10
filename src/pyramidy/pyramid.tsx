@@ -26,7 +26,7 @@ const Pyramid = (props: BoxProps) => {
 
     return (
         <Box className="pyramidy-main" style={gridStyles} {...props}>
-            {!currentCategory  ? 
+            {currentCategory === null  ? 
             categories.map( (elem, idx) => (
                 <Categorie style={stylesArray[idx] ?? {}} key={idx} order={idx} displayName={elem.displayName} fullName={elem.fullName} onClick={() => onClickCategory(idx)}/>
             ))

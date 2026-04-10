@@ -1,4 +1,5 @@
 import { colorsTuple, createTheme, type CSSVariablesResolver } from '@mantine/core';
+import{ rem } from '@mantine/core';
 
 export const theme = createTheme({
   primaryColor: 'pyramidYellow',
@@ -32,6 +33,14 @@ export const theme = createTheme({
   fontFamily: 'FredokaOne, serif',
   defaultRadius: 'md',
   autoContrast: true,
+  fontSizes: {
+    xs: rem(14),
+    sm: rem(16),
+    md: rem(18),
+    lg: rem(20),
+    xl: rem(22),
+  },
+  scale: 1.05,
 });
 
 export const cssVariablesResolver: CSSVariablesResolver = (theme) => ({

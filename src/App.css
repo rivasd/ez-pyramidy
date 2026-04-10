@@ -19,6 +19,7 @@ div.pyramidy-categorie {
   justify-content: center;
   align-items: center;
   padding:5px;
+  font-size: 18pt;
 }
 
 div.pyramidy-categorie.pyramidy-categorie-disabled {

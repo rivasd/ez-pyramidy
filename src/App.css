@@ -3,55 +3,6 @@
   src: url('./static/FredokaOne-Regular.ttf');
 }
 
-.App, main {
-  text-align: center;
-  background-color: #177cff;
-  font-family: 'FredokaOne', serif;
-  font-size: 1.2em;
-}
-
-main {
-  padding: 2%;
-  box-sizing: border-box;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.App {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 div.pyramidy-main {
   display: grid;
   height: 100%;
@@ -68,6 +19,7 @@ div.pyramidy-categorie {
   justify-content: center;
   align-items: center;
   padding:5px;
+  font-size: 18pt;
 }
 
 div.pyramidy-categorie.pyramidy-categorie-disabled {
@@ -75,30 +27,6 @@ div.pyramidy-categorie.pyramidy-categorie-disabled {
   color: #282c34;
   pointer-events: none;
   cursor: auto;
-}
-
-div.overlay {
-  position: fixed;
-  padding: 0;
-  margin: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  background-color: #177cff;
-  font-family: 'FredokaOne', serif;
-  color: #fcff33;
-  vertical-align: middle;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-}
-
-div.overlay p{
-  vertical-align: middle;
-  font-size: 32pt; 
 }
 
 div.jspsych-categorize-html-stimulus p {
@@ -114,27 +42,22 @@ button {
 }
 
 .pyramidy-timer {
-  position: fixed;
   padding: 0;
   margin: 0;
-  top:10%;
-  left:49%;
   width:50px;
   height:50px;
   z-index:11;
-  font-family: 'FredokaOne';
-  background-color: #177cff;
-  color: crimson;
+  font-size: 20pt;
+  color: rgb(243, 74, 74);
 }
 
-header h4, h3 {
-  margin: 2px;
-}
-
-h4 {
-  font-size: 12pt;
-}
-
-h3 {
-  font-size: 14pt;
+#pyramidy-target {
+  text-align: center;
+  color: #fcff33;
+  font-size: 22pt;
+  height: 100%;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

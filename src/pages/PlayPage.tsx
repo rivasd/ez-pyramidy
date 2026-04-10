@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom';
-import Pyramid from '../pyramidy/pyramid';
+import Pyramid from '../pyramidy/Pyramid';
 import { useGameStore } from '../state';
 import { Flex } from '@mantine/core';
 import GameStatus from '../pyramidy/GameStatus';

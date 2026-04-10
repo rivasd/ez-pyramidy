@@ -41,7 +41,7 @@ const SetupPage = () => {
       <>
         <Stack align="center" mt="70px">
           <Title order={2}>Configuration des équipes</Title>
-          {form.getValues().teams.map((team, idx) =>  (
+          {form.getValues().teams.map((_, idx) =>  (
             <Group key={idx}>
               <Text>Nom de l'équipe {idx + 1}</Text>
               <TextInput {...form.getInputProps(`teams.${idx}`)} />

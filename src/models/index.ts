@@ -19,5 +19,6 @@ export interface Category {
 
 export interface Game {
   max_time: number;
+  gameImgUrl?: string;
   categories: Category[];
 }

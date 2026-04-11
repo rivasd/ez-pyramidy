@@ -4,10 +4,12 @@ import { getStyles, getGridCss } from '../utils';
 import { useGameStore } from '../state';
 import PlaySpace from './PlaySpace';
 import { Box, type BoxProps } from '@mantine/core';
+import syles from '../styles/Pyramid.module.css';
 
 const Pyramid = (props: BoxProps) => {
 
     const categories = useGameStore((state) => state.gameDef?.categories || []);
+    const gameImgUrl = useGameStore((state) => state.gameDef?.gameImgUrl);
     const playCategory = useGameStore((state) => state.playCategory);
     const advanceToNextTeams = useGameStore((state) => state.advanceToNextTeam);
     const [currentCategory, setCurrentCategory] = useState<number | null>(null);
@@ -26,10 +28,13 @@ const Pyramid = (props: BoxProps) => {
 
     return (
         <Box className="pyramidy-main" style={gridStyles} {...props}>
+            {gameImgUrl && <img src={gameImgUrl} alt="Game" className={syles.gameImg}/>}
+            {gameImgUrl && <img src={gameImgUrl} alt="Game" className={syles.gameImg}/>}
             {currentCategory === null  ? 
             categories.map( (elem, idx) => (
                 <Categorie style={stylesArray[idx] ?? {}} key={idx} order={idx} displayName={elem.displayName} fullName={elem.fullName} onClick={() => onClickCategory(idx)}/>
             ))
+            
             :
                 <PlaySpace categoryIdx={currentCategory} onEnd={onEnd} />
             }

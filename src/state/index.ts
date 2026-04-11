@@ -31,6 +31,10 @@ const CategorySchema = z.object({
 
 const GameSchema = z.object({
   max_time: z.coerce.number().default(60),
+  gameImgUrl: z.preprocess(
+    (value) => (value == null || value === '' ? undefined : value),
+    z.string().optional()
+  ),
   categories: z.array(CategorySchema),
 });
 

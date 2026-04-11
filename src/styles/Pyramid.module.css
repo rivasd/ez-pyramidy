@@ -1,0 +1,14 @@
+.gameImg {
+  height: 200px;
+  position: absolute;
+  top: 150px;
+  
+
+  &:nth-last-of-type(2){
+    right: 100px;
+  }
+
+  &:nth-last-of-type(1){
+    left: 100px;
+  }
+}

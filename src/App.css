@@ -61,3 +61,7 @@ button {
   justify-content: center;
   align-items: center;
 }
+
+#jspsych-html-button-response-stimulus img {
+  height: 500px;
+}

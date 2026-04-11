@@ -5,7 +5,10 @@ import type { Game, Team } from '../models';
 
 const WordSchema = z.object({
   mot: z.string(),
-  imgUrl: z.string().optional(),
+  imgUrl: z.preprocess(
+    (value) => (value == null || value === '' ? undefined : value),
+    z.string().optional()
+  ),
   success: z.boolean().default(false),
   responseTime: z.number().optional(),
 });

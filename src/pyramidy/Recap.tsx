@@ -1,4 +1,4 @@
-import { Button, Group, List, Stack, Text } from "@mantine/core";
+import { Button, Group, Stack, Text } from "@mantine/core";
 import { useGameStore } from "../state";
 
 const Recap = ({ categoryIdx, onEnd }: { categoryIdx: number, onEnd: () => void }) => {

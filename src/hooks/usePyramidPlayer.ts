@@ -8,7 +8,7 @@ import type { Category, Word } from "../models";
 interface Props {
   targetElementId: string;
   categoryIdx: number;
-  onRunEnd: ()=>void;
+  onRunEnd: () => void;
 }
 
 const usePyramidPlayer = ({ targetElementId, categoryIdx, onRunEnd }: Props) => {
@@ -24,7 +24,7 @@ const usePyramidPlayer = ({ targetElementId, categoryIdx, onRunEnd }: Props) => 
   const timerSpan = useRef<HTMLDivElement | null>(null)
   const wordsToPlay = category ? category.words.map((word, idx) => ({ ...word, played: false, idx })) : []
 
-  
+
 
   const buildIntroTrial = (category: Category) => {
     return {
@@ -39,7 +39,7 @@ const usePyramidPlayer = ({ targetElementId, categoryIdx, onRunEnd }: Props) => 
   const buildWordTrial = () => {
     return {
       type: htmlButtonResponse,
-      choices: ["réussi", "passe"],
+      choices: ["réussi", "passe", "refusé"],
       response_ends_trial: true,
       stimulus: makeStimulus,
       on_finish: onFinishWordGuess,
@@ -48,7 +48,7 @@ const usePyramidPlayer = ({ targetElementId, categoryIdx, onRunEnd }: Props) => 
     }
   }
 
-  const makeStimulus = () =>  {
+  const makeStimulus = () => {
     const wordEntry = wordsToPlay[wordCounter.current % wordsToPlay.length] as Word;
     return `<div>
       ${wordEntry.imgUrl ? `<img src="${wordEntry.imgUrl}" alt="${wordEntry.mot}" />` : ""}
@@ -67,39 +67,50 @@ const usePyramidPlayer = ({ targetElementId, categoryIdx, onRunEnd }: Props) => 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onFinishWordGuess = (data: any) => {
     const resp = data.response === undefined ? parseInt(data.button_pressed) : data.response;
-    if (resp === 0){
-        wordsToPlay.splice(wordCounter.current % wordsToPlay.length, 1);
-        answerWord(categoryIdx, data.wordIndex, data.rt);
+    if (resp === 0) {
+      wordsToPlay.splice(wordCounter.current % wordsToPlay.length, 1);
+      answerWord(categoryIdx, data.wordIndex, data.rt);
     }
-    else if(resp === 1 ) {
-        wordCounter.current++;
+    else if (resp === 1) {
+      wordCounter.current++;
+    }
+    else if (resp === 2) {
+      wordsToPlay.splice(wordCounter.current % wordsToPlay.length, 1);
+      wordCounter.current++;
     }
   }
 
   const additionalKeysListener = () => {
-    if(jsPsychRef.current === null) return;
+    if (jsPsychRef.current === null) return;
 
-    const after_key = (info: {key: string, rt: number}) => {
-      if(jsPsychRef.current === null) return;
-      if (jsPsychRef.current.pluginAPI.compareKeys(info.key, " ")){
-          //trigger réussi
+    const after_key = (info: { key: string, rt: number }) => {
+      if (jsPsychRef.current === null) return;
+      if (jsPsychRef.current.pluginAPI.compareKeys(info.key, " ")) {
+        //trigger réussi
         if (typeof keyboardListener !== 'undefined') {
-            jsPsychRef.current.pluginAPI.cancelKeyboardResponse(keyboardListener);
-          }
-          (document.querySelector("button.jspsych-btn[data-choice='0']") as HTMLElement)?.click();
+          jsPsychRef.current.pluginAPI.cancelKeyboardResponse(keyboardListener);
+        }
+        (document.querySelector("button.jspsych-btn[data-choice='0']") as HTMLElement)?.click();
       }
-      else if (jsPsychRef.current.pluginAPI.compareKeys(info.key, "p")){
-          //trigger passe
-          if (typeof keyboardListener !== 'undefined') {
-              jsPsychRef.current.pluginAPI.cancelKeyboardResponse(keyboardListener);
-            }
-          (document.querySelector("button.jspsych-btn[data-choice='1']") as HTMLElement)?.click();
+      else if (jsPsychRef.current.pluginAPI.compareKeys(info.key, "p")) {
+        //trigger passe
+        if (typeof keyboardListener !== 'undefined') {
+          jsPsychRef.current.pluginAPI.cancelKeyboardResponse(keyboardListener);
+        }
+        (document.querySelector("button.jspsych-btn[data-choice='1']") as HTMLElement)?.click();
+      }
+      else if (jsPsychRef.current.pluginAPI.compareKeys(info.key, "i")) {
+        console.log(info);
+        if (typeof keyboardListener !== 'undefined') {
+          jsPsychRef.current.pluginAPI.cancelKeyboardResponse(keyboardListener);
+        }
+        (document.querySelector("button.jspsych-btn[data-choice='2']") as HTMLElement)?.click();
       }
     }
 
     const keyboardListener = jsPsychRef.current.pluginAPI.getKeyboardResponse({
       callback_function: after_key,
-      valid_responses: [" ", "p"],
+      valid_responses: [" ", "p", "i"],
       rt_method: 'performance',
       persist: false,
       allow_held_key: false

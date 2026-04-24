@@ -1,4 +1,4 @@
-import {create} from 'zustand';
+import { create } from 'zustand';
 import { parse } from 'yaml';
 import { z } from 'zod';
 import type { Game, Team } from '../models';
@@ -54,7 +54,7 @@ interface PyramidState {
   setGameDef: (gameDef: Game) => void;
   resetGame: () => void;
   advanceToNextTeam: () => void;
-  setTeams : (teams: Team[]) => void;
+  setTeams: (teams: Team[]) => void;
   playCategory: (categoryIndex: number) => void;
   loadGameDef: (file: File) => void;
   answerWord: (categoryIndex: number, wordIndex: number, responseTime: number) => void;
@@ -89,7 +89,7 @@ export const useGameStore = create<PyramidState>((set) => ({
     if (!state.gameDef) {
       throw new Error("Game definition must be set before changing the current team.");
     }
-    if( state.currentTeam === undefined) {
+    if (state.currentTeam === undefined) {
       return { currentTeam: 0 };
     }
     return { currentTeam: (state.currentTeam + 1) % state.teams.length };
@@ -117,7 +117,7 @@ export const useGameStore = create<PyramidState>((set) => ({
       }
     };
     reader.readAsText(file);
-  },  
+  },
   answerWord: (categoryIndex: number, wordIndex: number, responseTime: number) => set((state) => {
     if (!state.gameDef) {
       throw new Error("Game definition must be set before answering a word.");

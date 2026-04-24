@@ -6,7 +6,7 @@ import usePyramidPlayer from "../hooks/usePyramidPlayer"
 
 interface PlaySpaceProps {
   categoryIdx: number
-  onEnd: ()=>void
+  onEnd: () => void
 }
 
 const PlaySpace = ({ categoryIdx, onEnd }: PlaySpaceProps) => {
@@ -16,9 +16,9 @@ const PlaySpace = ({ categoryIdx, onEnd }: PlaySpaceProps) => {
   const [started, setStarted] = useState(false)
   const [done, setDone] = useState(false)
 
-  const {startPyramid, timerSpan} = usePyramidPlayer({
+  const { startPyramid, timerSpan } = usePyramidPlayer({
     targetElementId: "pyramidy-target",
-    categoryIdx,  
+    categoryIdx,
     onRunEnd: () => {
       setDone(true);
       setStarted(false);
@@ -26,15 +26,15 @@ const PlaySpace = ({ categoryIdx, onEnd }: PlaySpaceProps) => {
   })
 
   return (
-    <Box h="100%" w="100%" style={{textAlign: "center"}}>
-      <Stack h="100%" style={{textAlign: "center"}} justify="stretch" align="center">
-        <Box display={started ? 'none': 'initial'} flex="1">
-            <Stack h="100%" justify="center" align="center" gap="xl">
-              <Title className="title" c="pyramidYellow" fw="normal">{category!.fullName}</Title>
-              {done ? 
-              (<Recap categoryIdx={categoryIdx} onEnd={onEnd}/> )
+    <Box h="100%" w="100%" style={{ textAlign: "center" }}>
+      <Stack h="100%" style={{ textAlign: "center" }} justify="stretch" align="center">
+        <Box display={started ? 'none' : 'initial'} flex="1">
+          <Stack h="100%" justify="center" align="center" gap="xl">
+            <Title className="title" c="pyramidYellow" fw="normal">{category!.fullName}</Title>
+            {done ?
+              (<Recap categoryIdx={categoryIdx} onEnd={onEnd} />)
               :
-              <Button 
+              <Button
                 onClick={() => {
                   setStarted(true);
                   startPyramid();
@@ -45,18 +45,18 @@ const PlaySpace = ({ categoryIdx, onEnd }: PlaySpaceProps) => {
               >
                 Commencer
               </Button>
-              }
-            </Stack>
+            }
+          </Stack>
         </Box>
-        {!done && 
-        <>
-          <div ref={timerSpan} className="pyramidy-timer"></div>
-          <Box w="100%" display={started ? 'initial': 'none'} flex="1">
-            <div id="pyramidy-target" />
-          </Box>
-        </>
+        {!done &&
+          <>
+            <div ref={timerSpan} className="pyramidy-timer"></div>
+            <Box w="100%" display={started ? 'initial' : 'none'} flex="1">
+              <div id="pyramidy-target" />
+            </Box>
+          </>
         }
-        </Stack>
+      </Stack>
     </Box>
   )
 }

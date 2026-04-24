@@ -30,7 +30,7 @@ const usePyramidPlayer = ({ targetElementId, categoryIdx, onRunEnd }: Props) => 
     return {
       type: htmlButtonResponse,
       stimulus: `<p>Vous aurez ${category.max_time || default_time} secondes pour faire deviner un maximum de mots! \n Si vous devez deviner, détournez le regard maintenant. </p> \
-              <p> Utilisez les boutons, ou sinon ESPACE pour réussir et P pour passer</p>`,
+              <p> Utilisez les boutons, ou sinon ESPACE pour réussir,  P pour passer ou R pour refuser</p>`,
       choices: ["Débuter!"],
       on_finish: setupTimer
     }
@@ -100,7 +100,7 @@ const usePyramidPlayer = ({ targetElementId, categoryIdx, onRunEnd }: Props) => 
         (document.querySelector("button.jspsych-btn[data-choice='1']") as HTMLElement)?.click();
       }
       else if (jsPsychRef.current.pluginAPI.compareKeys(info.key, "i")) {
-        console.log(info);
+        //trigger refusé
         if (typeof keyboardListener !== 'undefined') {
           jsPsychRef.current.pluginAPI.cancelKeyboardResponse(keyboardListener);
         }
@@ -110,7 +110,7 @@ const usePyramidPlayer = ({ targetElementId, categoryIdx, onRunEnd }: Props) => 
 
     const keyboardListener = jsPsychRef.current.pluginAPI.getKeyboardResponse({
       callback_function: after_key,
-      valid_responses: [" ", "p", "i"],
+      valid_responses: [" ", "p", "r"],
       rt_method: 'performance',
       persist: false,
       allow_held_key: false

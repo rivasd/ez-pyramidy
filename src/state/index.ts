@@ -29,12 +29,19 @@ const CategorySchema = z.object({
   max_time: z.coerce.number().optional(),
 });
 
+const hexColorSchema = z.preprocess(
+  (value) => (value == null || value === '' ? undefined : value),
+  z.string().regex(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i, 'must be a hex color like #ff0000').optional()
+);
+
 const GameSchema = z.object({
   max_time: z.coerce.number().default(60),
   gameImgUrl: z.preprocess(
     (value) => (value == null || value === '' ? undefined : value),
     z.string().optional()
   ),
+  gameThemePrimaryColor: hexColorSchema,
+  gameThemeBodyColor: hexColorSchema,
   categories: z.array(CategorySchema),
 });
 

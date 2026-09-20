@@ -20,5 +20,7 @@ export interface Category {
 export interface Game {
   max_time: number;
   gameImgUrl?: string;
+  gameThemePrimaryColor?: string;
+  gameThemeBodyColor?: string;
   categories: Category[];
 }

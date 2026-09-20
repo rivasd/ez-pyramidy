@@ -1,5 +1,6 @@
 import { colorsTuple, createTheme, type CSSVariablesResolver } from '@mantine/core';
 import{ rem } from '@mantine/core';
+import type { Game } from './models';
 
 export const theme = createTheme({
   primaryColor: 'pyramidYellow',
@@ -52,3 +53,18 @@ export const cssVariablesResolver: CSSVariablesResolver = (theme) => ({
     '--mantine-color-body': theme.colors.lxGreen[8],
   },
 });
+
+// Builds a theme overriding the primary/body colors with ones read from the loaded game definition, if any.
+export const buildGameTheme = (gameDef?: Game) => {
+  if (!gameDef?.gameThemePrimaryColor && !gameDef?.gameThemeBodyColor) {
+    return theme;
+  }
+  return createTheme({
+    ...theme,
+    colors: {
+      ...theme.colors,
+      ...(gameDef.gameThemePrimaryColor && { pyramidYellow: colorsTuple(gameDef.gameThemePrimaryColor) }),
+      ...(gameDef.gameThemeBodyColor && { lxGreen: colorsTuple(gameDef.gameThemeBodyColor) }),
+    },
+  });
+};

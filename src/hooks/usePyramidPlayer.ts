@@ -39,7 +39,7 @@ const usePyramidPlayer = ({ targetElementId, categoryIdx, onRunEnd }: Props) => 
   const buildWordTrial = () => {
     return {
       type: htmlButtonResponse,
-      choices: ["réussi", "passe"],
+      choices: ["réussi", "passe", "refusé"],
       response_ends_trial: true,
       stimulus: makeStimulus,
       on_finish: onFinishWordGuess,
@@ -73,6 +73,9 @@ const usePyramidPlayer = ({ targetElementId, categoryIdx, onRunEnd }: Props) => 
     }
     else if(resp === 1 ) {
         wordCounter.current++;
+    }
+    else if(resp === 2 ) {
+        wordsToPlay.splice(wordCounter.current % wordsToPlay.length, 1);
     }
   }
 

@@ -1,5 +1,14 @@
 import type { Category } from "../models";
 
+export const shuffle = <T,>(arr: Array<T>): Array<T> => {
+  const result = [...arr];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+};
+
 export const solveXFromC = (c: number) => {
 	if (!Number.isInteger(c) || c <= 0) {
 		throw new Error("c must be a positive integer");

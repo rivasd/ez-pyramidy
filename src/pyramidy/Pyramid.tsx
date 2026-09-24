@@ -35,12 +35,10 @@ const Pyramid = (props: BoxProps) => {
             {gameImgUrl && <img src={gameImgUrl} alt="Game" className={syles.gameImg}/>}
             {gameImgUrl && <img src={gameImgUrl} alt="Game" className={syles.gameImg}/>}
             {currentCategory === null  ? 
-            displayOrder.map( (originalIdx, displayIdx) => {
-                const elem = categories[originalIdx];
-                return (
-                    <Categorie style={stylesArray[displayIdx] ?? {}} key={originalIdx} order={displayIdx} displayName={elem.displayName} fullName={elem.fullName} onClick={() => onClickCategory(originalIdx)}/>
-                );
-            })
+            displayOrder.map( (originalIdx, displayIdx) => (
+                // Categorie looks its data up in the store by `order`, so it must stay the original index
+                <Categorie style={stylesArray[displayIdx] ?? {}} key={originalIdx} order={originalIdx} onClick={() => onClickCategory(originalIdx)}/>
+            ))
             
             :
                 <PlaySpace categoryIdx={currentCategory} onEnd={onEnd} />

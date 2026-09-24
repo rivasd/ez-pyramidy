@@ -11,7 +11,7 @@ const Root = () => {
 
   return (
     <MantineProvider theme={theme} cssVariablesResolver={cssVariablesResolver}>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <App />
       </BrowserRouter>
     </MantineProvider>

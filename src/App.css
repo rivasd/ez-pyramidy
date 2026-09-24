@@ -39,6 +39,7 @@ button {
   border-radius: 10px;
   font-size: 1em;
   font-family: 'FredokaOne', 'serif';
+  margin-inline: 10px;
 }
 
 .pyramidy-timer {

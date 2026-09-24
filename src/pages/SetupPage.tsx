@@ -33,7 +33,7 @@ const SetupPage = () => {
       <Stack align="center" gap="sm" id="pyramidy-selector" mt="md">
         <Text component="label" htmlFor="source">Sélectionnez votre jeu</Text>
         <FileButton onChange={onLoadData} accept=".txt,.yaml,.yml">
-          {(props) => <Button {...props}>Choisir un fichier</Button>}
+          {(props) => <Button {...props} size="lg">Choisir un fichier</Button>}
         </FileButton>
       </Stack>
 

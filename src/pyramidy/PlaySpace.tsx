@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useGameStore } from "../state"
 import Recap from "./Recap"
-import { Box, Button, Stack, Title } from "@mantine/core"
+import { Box, Button, Stack, Title, useMantineTheme } from "@mantine/core"
 import usePyramidPlayer from "../hooks/usePyramidPlayer"
 
 interface PlaySpaceProps {
@@ -11,6 +11,7 @@ interface PlaySpaceProps {
 
 const PlaySpace = ({ categoryIdx, onEnd }: PlaySpaceProps) => {
 
+  const { primaryColor } = useMantineTheme();
   const category = useGameStore((state) => state.gameDef?.categories[categoryIdx]);
 
   const [started, setStarted] = useState(false)
@@ -30,7 +31,7 @@ const PlaySpace = ({ categoryIdx, onEnd }: PlaySpaceProps) => {
       <Stack h="100%" style={{textAlign: "center"}} justify="stretch" align="center">
         <Box display={started ? 'none': 'initial'} flex="1">
             <Stack h="100%" justify="center" align="center" gap="xl">
-              <Title className="title" c="pyramidYellow" fw="normal">{category!.fullName}</Title>
+              <Title className="title" c={primaryColor} fw="normal">{category!.fullName}</Title>
               {done ? 
               (<Recap categoryIdx={categoryIdx} onEnd={onEnd}/> )
               :

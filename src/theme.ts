@@ -3,7 +3,7 @@ import{ rem } from '@mantine/core';
 import type { Game } from './models';
 
 export const theme = createTheme({
-  primaryColor: 'pyramidYellow',
+  primaryColor: 'blue',
   colors: {
     pyramidBlue: [
       '#e7f2ff',
@@ -17,19 +17,7 @@ export const theme = createTheme({
       '#0059c8',
       '#004caf',
     ],
-    pyramidYellow: [
-      '#ffffe0',
-      '#ffffba',
-      '#ffff89',
-      '#ffff5b',
-      '#f8ff3f',
-      '#f0ff34',
-      '#fcff33',
-      '#dbe000',
-      '#c2c700',
-      '#a8ad00',
-    ],
-    lxGreen: colorsTuple("#098b4a")
+    gameBodyColor: colorsTuple("#098b4a")
   },
   fontFamily: 'FredokaOne, serif',
   defaultRadius: 'md',
@@ -47,10 +35,10 @@ export const theme = createTheme({
 export const cssVariablesResolver: CSSVariablesResolver = (theme) => ({
   variables: {},
   light: {
-    '--mantine-color-body': theme.colors.lxGreen[6],
+    '--mantine-color-body': theme.colors.gameBodyColor[6],
   },
   dark: {
-    '--mantine-color-body': theme.colors.lxGreen[8],
+    '--mantine-color-body': theme.colors.gameBodyColor[8],
   },
 });
 
@@ -63,8 +51,8 @@ export const buildGameTheme = (gameDef?: Game) => {
     ...theme,
     colors: {
       ...theme.colors,
-      ...(gameDef.gameThemePrimaryColor && { pyramidYellow: colorsTuple(gameDef.gameThemePrimaryColor) }),
-      ...(gameDef.gameThemeBodyColor && { lxGreen: colorsTuple(gameDef.gameThemeBodyColor) }),
+      ...(gameDef.gameThemePrimaryColor && { [theme.primaryColor as string]: colorsTuple(gameDef.gameThemePrimaryColor) }),
+      ...(gameDef.gameThemeBodyColor && { gameBodyColor: colorsTuple(gameDef.gameThemeBodyColor) }),
     },
   });
 };

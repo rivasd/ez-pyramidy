@@ -1,4 +1,4 @@
-import { Button, Group, Stack, Text } from "@mantine/core";
+import { Button, SimpleGrid, Stack, Text } from "@mantine/core";
 import { useGameStore } from "../state";
 
 const Recap = ({ categoryIdx, onEnd }: { categoryIdx: number, onEnd: () => void }) => {
@@ -7,14 +7,14 @@ const Recap = ({ categoryIdx, onEnd }: { categoryIdx: number, onEnd: () => void 
 
   return (
     <Stack ml="xl" maw={1200} align="center">
-      <Group>
+      <SimpleGrid cols={2} w="100%">
           {category?.words.map((word, idx) => (
             <Stack key={idx} align="center" justify="center">
               {word.imgUrl && <img src={word.imgUrl} alt={word.mot} style={{ height: "300px"}}  />}
               <Text c="var(--mantine-primary-color-filled)">{word.mot} - {word.success ? "Réussi" : "Raté"} {word.responseTime ? `(${word.responseTime / 1000} s)` : ""}</Text>
             </Stack>
           ))}
-      </Group>
+      </SimpleGrid>
       <Button onClick={onEnd} maw="200px" >
         Continuer
       </Button>

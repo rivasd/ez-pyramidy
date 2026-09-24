@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'FredokaOne';
   src: url('./static/FredokaOne-Regular.ttf');
+  font-weight: 400;
 }
 
 div.pyramidy-main {
@@ -20,6 +21,12 @@ div.pyramidy-categorie {
   align-items: center;
   padding:5px;
   font-size: 18pt;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-align: center;
+  word-break: break-word;
 }
 
 div.pyramidy-categorie.pyramidy-categorie-disabled {
@@ -33,14 +40,7 @@ div.jspsych-categorize-html-stimulus p {
   font-size: 50pt;
 }
 
-button {
-  background-color: #fcff33;
-  color: #177cff;
-  border-radius: 10px;
-  font-size: 1em;
-  font-family: 'FredokaOne', 'serif';
-  margin-inline: 10px;
-}
+
 
 .pyramidy-timer {
   padding: 0;
@@ -53,14 +53,28 @@ button {
 }
 
 #pyramidy-target {
-  text-align: center;
-  color: #fcff33;
-  font-size: 22pt;
+  
+  
   height: 100%;
   vertical-align: middle;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  p {
+    text-align: center;
+    color: var(--mantine-primary-color-filled);
+    font-size: 32pt;
+  }
+
+  button {
+    background-color: var(--mantine-primary-color-filled);
+    color: var(--mantine-color-black);
+    border-radius: 10px;
+    font-size: 1em;
+    font-family: 'FredokaOne', 'serif';
+    margin-inline: 10px;
+  }
 }
 
 #jspsych-html-button-response-stimulus img {

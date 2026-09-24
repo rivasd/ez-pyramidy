@@ -38,8 +38,8 @@ export const getGridCss = (categories: Array<Category>) => {
     cols: pyramidHeigth * 2
   }
   const style =  {
-      gridTemplateColumns : ((100 / dims["cols"]).toString()+"% ").repeat(dims["cols"]),
-      gridTemplateRows: ((100 / dims["rows"]).toString()+"% ").repeat(dims["rows"]),
+      gridTemplateColumns : (`minmax(0, ${100 / dims["cols"]}%) `).repeat(dims["cols"]),
+      gridTemplateRows: (`minmax(0, ${100 / dims["rows"]}%) `).repeat(dims["rows"]),
   }
   return style;
 }

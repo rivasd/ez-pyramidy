@@ -11,7 +11,7 @@ const Recap = ({ categoryIdx, onEnd }: { categoryIdx: number, onEnd: () => void 
           {category?.words.map((word, idx) => (
             <Stack key={idx} align="center" justify="center">
               {word.imgUrl && <img src={word.imgUrl} alt={word.mot} style={{ height: "300px"}}  />}
-              <Text c="var(--mantine-primary-color-filled)">{word.mot} - {word.success ? "Réussi" : "Raté"} {word.responseTime ? `(${word.responseTime / 1000} s)` : ""}</Text>
+              <Text c="var(--pyramidy-text)">{word.mot} - {word.success ? "Réussi" : "Raté"} {word.responseTime ? `(${word.responseTime / 1000} s)` : ""}</Text>
             </Stack>
           ))}
       </Group>

@@ -3,9 +3,12 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from './pages/Layout';
 import SetupPage from './pages/SetupPage';
 import PlayPage from './pages/PlayPage';
+import ThemeStyles from './ThemeStyles';
 
 function App() {
   return (
+    <>
+    <ThemeStyles />
     <Routes>
       <Route path="/" element={<Navigate to="/setup" replace />} />
       <Route element={<Layout />}>
@@ -14,6 +17,7 @@ function App() {
       </Route>
       <Route path="*" element={<Navigate to="/setup" replace />} />
     </Routes>
+    </>
   )
 }
 

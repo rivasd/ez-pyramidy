@@ -1,8 +1,8 @@
 .teamScore {
-  color: darken(var(--mantine-primary-color-light), 0.2);
+  color: var(--pyramidy-text);
 
   &[data-current="true"] {
     font-size: 1.5em;
-    color: var(--mantine-primary-color-filled);
+    color: var(--pyramidy-border);
   }
 }

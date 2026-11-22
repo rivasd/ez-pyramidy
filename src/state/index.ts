@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { parse } from 'yaml';
 import { z } from 'zod';
 import type { Game, Team } from '../models';
+import { DEFAULT_THEME_ID } from '../themes';
 
 const WordSchema = z.object({
   mot: z.string(),
@@ -47,7 +48,11 @@ function formatValidationErrors(error: z.ZodError): string {
     .join('\n');
 }
 
+export type ThemeId = 'yellow' | 'green' | 'blue' | 'red';
+
 interface PyramidState {
+  themeId: ThemeId;
+  setTheme: (themeId: ThemeId) => void;
   gameDef?: Game
   teams: Team[];
   currentTeam?: number;
@@ -61,6 +66,8 @@ interface PyramidState {
 }
 
 export const useGameStore = create<PyramidState>((set) => ({
+  themeId: DEFAULT_THEME_ID,
+  setTheme: (themeId) => set({ themeId }),
   teams: [],
   setGameDef: (gameDef: Game) => set({ gameDef }),
   setTeams: (teams: Team[]) => set({ teams, currentTeam: 0 }),

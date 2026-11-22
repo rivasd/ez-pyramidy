@@ -30,7 +30,7 @@ const PlaySpace = ({ categoryIdx, onEnd }: PlaySpaceProps) => {
       <Stack h="100%" style={{ textAlign: "center" }} justify="stretch" align="center">
         <Box display={started ? 'none' : 'initial'} flex="1">
           <Stack h="100%" justify="center" align="center" gap="xl">
-            <Title className="title" c="pyramidYellow" fw="normal">{category!.fullName}</Title>
+            <Title className="pyramidy-title" fw="normal">{category!.fullName}</Title>
             {done ?
               (<Recap categoryIdx={categoryIdx} onEnd={onEnd} />)
               :

@@ -26,7 +26,7 @@ const PlaySpace = ({ categoryIdx, onEnd }: PlaySpaceProps) => {
   })
 
   return (
-    <Box h="100%" w="100%" style={{ textAlign: "center" }}>
+    <Box h="100%" w="100%" style={{ textAlign: "center", gridColumn: "1 / -1", gridRow: "1 / -1" }}>
       <Stack h="100%" style={{ textAlign: "center" }} justify="stretch" align="center">
         <Box display={started ? 'none' : 'initial'} flex="1">
           <Stack h="100%" justify="center" align="center" gap="xl">

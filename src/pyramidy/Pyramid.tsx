@@ -26,7 +26,7 @@ const Pyramid = (props: BoxProps) => {
     }
 
     return (
-        <Box className="pyramidy-main" style={gridStyles} {...props}>
+        <Box className="pyramidy-main" {...props} style={{ ...gridStyles, ...props.style }}>
             {gameImgUrl && <img src={gameImgUrl} alt="Game" className={syles.gameImg} />}
             {gameImgUrl && <img src={gameImgUrl} alt="Game" className={syles.gameImg} />}
             {currentCategory === null ?

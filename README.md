@@ -6,7 +6,7 @@ A Javascript implementation of the Pyramid game, powered by React and jsPsych.
 
 1. go to http://rivasd.github.io/ez-pyramidy and hope there is no bug.
 2. Upload the text file describing your game
-3. Pick a color theme (yellow, green, dark blue or red)
+3. Pick a theme (Castors, Louveteaux, Éclaireur or Pionnier)
 4. Have fun!
 
 ## How to describe my game?

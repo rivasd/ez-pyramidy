@@ -16,7 +16,7 @@ export interface ThemePalette {
 export const themes: ThemePalette[] = [
   {
     id: 'yellow',
-    label: 'Miel & noisette',
+    label: 'Castors',
     background: '#F6C445',
     text: '#4A2E1B',
     border: '#7A4B1E',
@@ -26,7 +26,7 @@ export const themes: ThemePalette[] = [
   },
   {
     id: 'green',
-    label: 'Forêt & crème',
+    label: 'Louveteaux',
     background: '#14532D',
     text: '#F5F0D7',
     border: '#9BCF53',
@@ -36,7 +36,7 @@ export const themes: ThemePalette[] = [
   },
   {
     id: 'blue',
-    label: 'Ardoise & or',
+    label: 'Éclaireur',
     background: '#1B2A41',
     text: '#F3E2B8',
     border: '#D9A441',
@@ -46,7 +46,7 @@ export const themes: ThemePalette[] = [
   },
   {
     id: 'red',
-    label: 'Sang-de-bœuf',
+    label: 'Pionnier',
     background: '#8E2B2B',
     text: '#FFFFFF',
     border: '#F7E4E0',

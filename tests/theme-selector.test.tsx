@@ -15,10 +15,19 @@ describe('theme selector', () => {
     expect(screen.getAllByRole('button')).toHaveLength(4)
   })
 
+  it('labels the themes with the scout section names', () => {
+    render(<ThemeSelector />)
+
+    expect(screen.getByRole('button', { name: /castors/i })).toBeTruthy()
+    expect(screen.getByRole('button', { name: /louveteaux/i })).toBeTruthy()
+    expect(screen.getByRole('button', { name: /éclaireur/i })).toBeTruthy()
+    expect(screen.getByRole('button', { name: /pionnier/i })).toBeTruthy()
+  })
+
   it('selects a theme when its card is clicked', () => {
     render(<ThemeSelector />)
 
-    fireEvent.click(screen.getByRole('button', { name: /sang-de-bœuf/i }))
+    fireEvent.click(screen.getByRole('button', { name: /pionnier/i }))
 
     expect(useGameStore.getState().themeId).toBe('red')
   })
@@ -26,6 +35,6 @@ describe('theme selector', () => {
   it('marks the current theme as selected', () => {
     render(<ThemeSelector />)
 
-    expect(screen.getByRole('button', { name: /forêt & crème/i }).getAttribute('aria-pressed')).toBe('true')
+    expect(screen.getByRole('button', { name: /louveteaux/i }).getAttribute('aria-pressed')).toBe('true')
   })
 })

@@ -48,6 +48,14 @@ button.mantine-Button-root {
   --button-hover-color: var(--pyramidy-button-text) !important;
 }
 
+input.mantine-Input-input {
+  --input-bg: var(--pyramidy-bg) !important;
+  --input-color: var(--pyramidy-text) !important;
+  --input-placeholder-color: var(--pyramidy-text) !important;
+  --input-bd: var(--pyramidy-border) !important;
+  --input-bd-focus: var(--pyramidy-border) !important;
+}
+
 .pyramidy-timer {
   padding: 0;
   margin: 0;

@@ -24,7 +24,7 @@ describe('theme selection during setup', () => {
       </MantineProvider>
     )
 
-    fireEvent.click(screen.getByRole('button', { name: /ardoise & or/i }))
+    fireEvent.click(screen.getByRole('button', { name: /éclaireur/i }))
 
     expect(document.documentElement.style.getPropertyValue('--pyramidy-bg')).toBe('#1B2A41')
   })

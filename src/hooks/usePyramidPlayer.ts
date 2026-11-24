@@ -78,6 +78,9 @@ const usePyramidPlayer = ({ targetElementId, categoryIdx, onRunEnd }: Props) => 
       wordsToPlay.splice(wordCounter.current % wordsToPlay.length, 1);
       wordCounter.current++;
     }
+    else if(resp === 2 ) {
+        wordsToPlay.splice(wordCounter.current % wordsToPlay.length, 1);
+    }
   }
 
   const additionalKeysListener = () => {

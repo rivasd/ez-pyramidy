@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useGameStore } from "../state"
 import Recap from "./Recap"
-import { Box, Button, Stack, Title } from "@mantine/core"
+import { Box, Button, Stack, Title, useMantineTheme } from "@mantine/core"
 import usePyramidPlayer from "../hooks/usePyramidPlayer"
 
 interface PlaySpaceProps {
@@ -11,6 +11,7 @@ interface PlaySpaceProps {
 
 const PlaySpace = ({ categoryIdx, onEnd }: PlaySpaceProps) => {
 
+  const { primaryColor } = useMantineTheme();
   const category = useGameStore((state) => state.gameDef?.categories[categoryIdx]);
 
   const [started, setStarted] = useState(false)

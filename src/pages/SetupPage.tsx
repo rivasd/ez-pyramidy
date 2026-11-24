@@ -2,6 +2,7 @@ import { ActionIcon, Button, Center, CloseIcon, FileButton, Group, Stack, Text, 
 import { useNavigate } from 'react-router-dom';
 import { useGameStore } from '../state';
 import { useForm } from '@mantine/form';
+import ThemeSelector from '../pyramidy/ThemeSelector';
 
 const SetupPage = () => {
   const loadGameDef = useGameStore((state) => state.loadGameDef);
@@ -36,6 +37,8 @@ const SetupPage = () => {
           {(props) => <Button {...props} size="lg">Choisir un fichier</Button>}
         </FileButton>
       </Stack>
+
+      <ThemeSelector />
 
       {hasCategories && 
       <>

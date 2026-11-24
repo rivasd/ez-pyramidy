@@ -12,8 +12,8 @@ div.pyramidy-main {
 
 div.pyramidy-categorie {
   margin: 5% 2.5%;
-  border: 2px solid #fcff33;
-  color: #fcff33;
+  border: 2px solid var(--pyramidy-border);
+  color: var(--pyramidy-text);
   cursor: pointer;
   vertical-align: middle;
   display: flex;
@@ -31,7 +31,7 @@ div.pyramidy-categorie {
 
 div.pyramidy-categorie.pyramidy-categorie-disabled {
   opacity: 0.5;
-  color: #282c34;
+  color: var(--pyramidy-text);
   pointer-events: none;
   cursor: auto;
 }
@@ -40,7 +40,28 @@ div.jspsych-categorize-html-stimulus p {
   font-size: 50pt;
 }
 
+button {
+  background-color: var(--pyramidy-button-bg);
+  color: var(--pyramidy-button-text);
+  border-radius: 10px;
+  font-size: 1em;
+  font-family: 'FredokaOne', 'serif';
+}
 
+button.mantine-Button-root {
+  --button-bg: var(--pyramidy-button-bg) !important;
+  --button-color: var(--pyramidy-button-text) !important;
+  --button-hover: var(--pyramidy-button-bg) !important;
+  --button-hover-color: var(--pyramidy-button-text) !important;
+}
+
+input.mantine-Input-input {
+  --input-bg: var(--pyramidy-bg) !important;
+  --input-color: var(--pyramidy-text) !important;
+  --input-placeholder-color: var(--pyramidy-text) !important;
+  --input-bd: var(--pyramidy-border) !important;
+  --input-bd-focus: var(--pyramidy-border) !important;
+}
 
 .pyramidy-timer {
   padding: 0;
@@ -49,12 +70,13 @@ div.jspsych-categorize-html-stimulus p {
   height:50px;
   z-index:11;
   font-size: 20pt;
-  color: rgb(243, 74, 74);
+  color: var(--pyramidy-timer);
 }
 
 #pyramidy-target {
-  
-  
+  text-align: center;
+  color: var(--pyramidy-text);
+  font-size: 22pt;
   height: 100%;
   vertical-align: middle;
   display: flex;
@@ -79,4 +101,57 @@ div.jspsych-categorize-html-stimulus p {
 
 #jspsych-html-button-response-stimulus img {
   height: 500px;
+}
+
+.pyramidy-theme-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.pyramidy-theme-selector-title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.pyramidy-theme-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.pyramidy-theme-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 140px;
+  padding: 0.75rem;
+  border: 3px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.pyramidy-theme-card.selected {
+  border-color: var(--pyramidy-text);
+}
+
+.pyramidy-theme-preview {
+  width: 100%;
+  padding: 0.4rem 0;
+  border: 2px solid;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.pyramidy-theme-label {
+  font-size: 0.85rem;
+}
+
+.pyramidy-title {
+  color: var(--pyramidy-text);
 }

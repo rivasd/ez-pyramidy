@@ -1,7 +1,8 @@
-import {create} from 'zustand';
+import { create } from 'zustand';
 import { parse } from 'yaml';
 import { z } from 'zod';
 import type { Game, Team } from '../models';
+import { DEFAULT_THEME_ID } from '../themes';
 
 const WordSchema = z.object({
   mot: z.string(),
@@ -54,20 +55,26 @@ function formatValidationErrors(error: z.ZodError): string {
     .join('\n');
 }
 
+export type ThemeId = 'yellow' | 'green' | 'blue' | 'red';
+
 interface PyramidState {
+  themeId: ThemeId;
+  setTheme: (themeId: ThemeId) => void;
   gameDef?: Game
   teams: Team[];
   currentTeam?: number;
   setGameDef: (gameDef: Game) => void;
   resetGame: () => void;
   advanceToNextTeam: () => void;
-  setTeams : (teams: Team[]) => void;
+  setTeams: (teams: Team[]) => void;
   playCategory: (categoryIndex: number) => void;
   loadGameDef: (file: File) => void;
   answerWord: (categoryIndex: number, wordIndex: number, responseTime: number) => void;
 }
 
 export const useGameStore = create<PyramidState>((set) => ({
+  themeId: DEFAULT_THEME_ID,
+  setTheme: (themeId) => set({ themeId }),
   teams: [],
   setGameDef: (gameDef: Game) => set({ gameDef }),
   setTeams: (teams: Team[]) => set({ teams, currentTeam: 0 }),
@@ -96,7 +103,7 @@ export const useGameStore = create<PyramidState>((set) => ({
     if (!state.gameDef) {
       throw new Error("Game definition must be set before changing the current team.");
     }
-    if( state.currentTeam === undefined) {
+    if (state.currentTeam === undefined) {
       return { currentTeam: 0 };
     }
     return { currentTeam: (state.currentTeam + 1) % state.teams.length };
@@ -124,7 +131,7 @@ export const useGameStore = create<PyramidState>((set) => ({
       }
     };
     reader.readAsText(file);
-  },  
+  },
   answerWord: (categoryIndex: number, wordIndex: number, responseTime: number) => set((state) => {
     if (!state.gameDef) {
       throw new Error("Game definition must be set before answering a word.");

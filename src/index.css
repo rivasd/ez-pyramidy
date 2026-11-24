@@ -1,3 +1,12 @@
+:root {
+  --pyramidy-bg: #14532D;
+  --pyramidy-text: #F5F0D7;
+  --pyramidy-border: #9BCF53;
+  --pyramidy-button-bg: #9BCF53;
+  --pyramidy-button-text: #143D22;
+  --pyramidy-timer: #FF8A5B;
+}
+
 body, html {
   margin: 0;
   padding: 0;

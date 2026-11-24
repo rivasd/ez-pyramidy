@@ -32,14 +32,17 @@ export const theme = createTheme({
   scale: 1.05,
 });
 
-export const cssVariablesResolver: CSSVariablesResolver = (theme) => ({
+const themedColors = {
+  '--mantine-color-body': 'var(--pyramidy-bg)',
+  '--mantine-color-text': 'var(--pyramidy-text)',
+  '--mantine-color-placeholder': 'var(--pyramidy-text)',
+  '--mantine-color-anchor': 'var(--pyramidy-border)',
+};
+
+export const cssVariablesResolver: CSSVariablesResolver = () => ({
   variables: {},
-  light: {
-    '--mantine-color-body': theme.colors.gameBodyColor[6],
-  },
-  dark: {
-    '--mantine-color-body': theme.colors.gameBodyColor[8],
-  },
+  light: { ...themedColors },
+  dark: { ...themedColors },
 });
 
 // Builds a theme overriding the primary/body colors with ones read from the loaded game definition, if any.
